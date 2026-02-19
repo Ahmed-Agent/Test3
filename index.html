@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zalabia Luxury Shop</title>
+
+<link rel="icon" type="image/png" href="https://nol.pages.dev/src/donicon.png">
+
+<style>
+:root{
+--pink:#fde6ec;
+--orange:#ff9f5a;
+--dark:#1e1e1e;
+--card:#ffffff;
+--shadow:0 10px 30px rgba(0,0,0,.08);
+--radius:22px;
+}
+
+*{box-sizing:border-box;font-family:'Cairo',sans-serif}
+
+body{
+margin:0;
+background:linear-gradient(180deg,var(--pink),#fff);
+color:var(--dark);
+}
+
+header{
+padding:20px;
+text-align:center;
+font-size:22px;
+font-weight:700;
+background:linear-gradient(90deg,var(--pink),#fff);
+letter-spacing:1px;
+}
+
+.section{
+padding:18px;
+}
+
+.category-title{
+font-size:18px;
+font-weight:700;
+margin-bottom:12px;
+color:#d66a8d;
+}
+
+.card{
+background:var(--card);
+padding:16px;
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+margin-bottom:15px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-4px);
+}
+
+.item-name{
+font-weight:600;
+margin-bottom:10px;
+}
+
+.sizes{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+}
+
+.size-btn{
+border:none;
+padding:8px 14px;
+border-radius:30px;
+background:var(--pink);
+cursor:pointer;
+font-size:13px;
+transition:.3s;
+}
+
+.size-btn:hover{
+background:var(--orange);
+color:white;
+}
+
+.add-btn{
+margin-top:12px;
+width:100%;
+padding:10px;
+border:none;
+border-radius:30px;
+background:var(--orange);
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+.basket{
+position:fixed;
+bottom:20px;
+right:20px;
+background:var(--orange);
+color:white;
+padding:14px 18px;
+border-radius:50px;
+box-shadow:var(--shadow);
+cursor:pointer;
+z-index:1000;
+}
+
+.basket-count{
+background:white;
+color:var(--orange);
+border-radius:50%;
+padding:4px 8px;
+font-size:12px;
+margin-right:5px;
+}
+
+.popup{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.4);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.popup-content{
+background:white;
+padding:25px;
+border-radius:var(--radius);
+width:90%;
+max-width:350px;
+text-align:center;
+}
+
+.popup button{
+width:100%;
+margin-top:10px;
+padding:12px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-weight:600;
+}
+
+.whatsapp{
+background:#25D366;
+color:white;
+}
+
+.phone{
+background:var(--orange);
+color:white;
+}
+
+footer{
+margin-top:40px;
+padding:25px;
+background:linear-gradient(90deg,var(--pink),#fff);
+text-align:center;
+font-size:13px;
+}
+
+footer a{
+color:var(--orange);
+text-decoration:none;
+display:block;
+margin-top:8px;
+}
+</style>
+</head>
+<body>
+
+<header>
+Zalabia & Donuts – Luxury Edition 2026
+</header>
+
+<div class="section">
+
+<div class="category-title">🍩 دونات | Donuts</div>
+
+<div class="card">
+<div class="item-name">نوتيلا / Nutella</div>
+<div class="sizes">
+<button class="size-btn" onclick="selectSize(this,35)">عادي 35</button>
+<button class="size-btn" onclick="selectSize(this,50)">كبير 50</button>
+</div>
+<button class="add-btn" onclick="addToCart('نوتيلا')">إضافة للسلة</button>
+</div>
+
+<div class="card">
+<div class="item-name">لوتس / Lotus</div>
+<div class="sizes">
+<button class="size-btn" onclick="selectSize(this,35)">عادي 35</button>
+<button class="size-btn" onclick="selectSize(this,50)">كبير 50</button>
+</div>
+<button class="add-btn" onclick="addToCart('لوتس')">إضافة للسلة</button>
+</div>
+
+<div class="category-title">🧇 وافل | Waffle</div>
+
+<div class="card">
+<div class="item-name">وافل شوكولاتة</div>
+<div class="sizes">
+<button class="size-btn" onclick="selectSize(this,40)">40</button>
+<button class="size-btn" onclick="selectSize(this,50)">50</button>
+</div>
+<button class="add-btn" onclick="addToCart('وافل شوكولاتة')">إضافة للسلة</button>
+</div>
+
+<div class="category-title">🥞 ميني بانكيك | Mini Pancake</div>
+
+<div class="card">
+<div class="item-name">ميني بانكيك</div>
+<div class="sizes">
+<button class="size-btn" onclick="selectSize(this,40)">10 قطع - 40</button>
+<button class="size-btn" onclick="selectSize(this,60)">15 قطعة - 60</button>
+<button class="size-btn" onclick="selectSize(this,70)">20 قطعة - 70</button>
+<button class="size-btn" onclick="selectSize(this,80)">25 قطعة - 80</button>
+</div>
+<button class="add-btn" onclick="addToCart('ميني بانكيك')">إضافة للسلة</button>
+</div>
+
+</div>
+
+<div class="basket" onclick="openPopup()">
+🛒 <span class="basket-count" id="count">0</span>
+</div>
+
+<div class="popup" id="popup">
+<div class="popup-content">
+<h3>إتمام الطلب</h3>
+<button class="whatsapp" onclick="orderWhatsApp()">طلب عبر واتساب</button>
+<button class="phone" onclick="orderPhone()">اتصال مباشر</button>
+<button onclick="closePopup()" style="background:#eee;margin-top:15px;">إغلاق</button>
+</div>
+</div>
+
+<footer>
+<p>Luxury Pink & Orange Theme</p>
+<a href="tel:01125263455">📞 01125263455</a>
+<a href="https://wa.me/201125263455">💬 WhatsApp 01125263455</a>
+<p>© 2026 All Rights Reserved</p>
+</footer>
+
+<script>
+let cart=[];
+let selectedPrice=0;
+
+function selectSize(btn,price){
+selectedPrice=price;
+btn.parentElement.querySelectorAll('.size-btn').forEach(b=>b.style.background='#fde6ec');
+btn.style.background='#ff9f5a';
+btn.style.color='white';
+}
+
+function addToCart(name){
+if(!selectedPrice){alert("اختر الحجم أولاً");return;}
+cart.push({name:name,price:selectedPrice});
+updateCount();
+selectedPrice=0;
+}
+
+function updateCount(){
+document.getElementById('count').innerText=cart.length;
+}
+
+function openPopup(){
+if(cart.length===0){alert("السلة فارغة");return;}
+document.getElementById('popup').style.display='flex';
+}
+
+function closePopup(){
+document.getElementById('popup').style.display='none';
+}
+
+function generateMessage(){
+let total=0;
+let text="طلب جديد:%0A";
+cart.forEach((item,i)=>{
+text+= (i+1)+") "+item.name+" - "+item.price+" جنيه%0A";
+total+=item.price;
+});
+text+="الإجمالي: "+total+" جنيه";
+return text;
+}
+
+function orderWhatsApp(){
+let message=generateMessage();
+window.location.href="https://wa.me/201125263455?text="+message;
+}
+
+function orderPhone(){
+window.location.href="tel:01125263455";
+}
+</script>
+
+</body>
+</html>
