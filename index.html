@@ -1,616 +1,187 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Zalabia & Donuts — Menu (Luxury)</title>
-<link rel="icon" href="https://nol.pages.dev/src/donicon.png" />
-<meta name="description" content="قائمة زلابية و دونات — تصميم فاخر ومحمول أولاً. اطلب عبر واتساب أو اتصال." />
-<style>
-/* ----------------- THEME COLORS ----------------- */
-:root{
-  --bg:#fff7fa;            /* pale pink background */
-  --card:#fff;             /* card bg */
-  --text:#222;             /* main text */
-  --muted:#7a6b74;         /* muted */
-  --accent:#ff6f88;        /* dark pink primary */
-  --accent-soft:#fde6ec;   /* pale pink soft */
-  --accent-2:#ffb47a;      /* light orange (accent ~7%) */
-  --glass: rgba(255,255,255,0.65);
-  --radius:16px;
-  --shadow: 0 8px 30px rgba(16,16,24,0.08);
-  --glass-2: rgba(255,255,255,0.85);
-}
+✅ Brand
+ZALABIA & DONUTS
+📱 WhatsApp & Delivery Number:
+01125263455
+🍩 Donuts (Dounts)
+Item
+Single
+Double
+نوتيلا
+35
+50
+شوكولاتة بيضاء
+35
+50
+لوتس
+35
+50
+كراميل
+35
+50
+توت أزرق
+35
+50
+فراولة
+35
+50
+فيريرو روشيه
+40
+60
+كيندر
+40
+60
+دارك شوكليت
+40
+60
+زبادي
+40
+60
+لبان
+35
+50
+غزل البنات
+35
+50
+🧇 Waffle
+Item
+Price
+نوتيلا
+35
+شوكولاتة بيضاء
+35
+اوريو
+35
+توت أزرق
+35
+فراولة
+35
+لوتس
+35
+كراميل
+35
+فيريرو روشيه
+40
+كيندر
+40
+زبادي
+40
+دارك شوكليت
+40
+غزل البنات
+40
+لبان
+35
+🥞 Mini Pancake
+Sizes (Pieces)
+10 قطع = 40
+15 قطع = 60
+20 قطع = 70
+25 قطع = 80
+Flavors:
+نوتيلا
+شوكولاتة بيضاء
+لوتس
+كراميل
+توت أزرق
+فراولة
+كيندر
+دارك شوكليت
+(All flavors same price per size)
+🍯 Zalabia
+Sizes
+Flavor
+S
+M
+L
+XL
+سكر
+30
+40
+60
+100
+عسل
+30
+40
+60
+100
+نوتيلا
+35
+50
+80
+120
+لوتس
+35
+50
+80
+120
+كراميل
+35
+50
+80
+120
+توت أزرق
+35
+50
+80
+120
+فراولة
+35
+50
+80
+120
+وايت شوكليت
+35
+50
+80
+120
+دارك شوكليت
+40
+60
+100
+150
+كيندر
+40
+60
+100
+150
+☕ Ice Coffee
+Item
+Price
+دارك
+50
+كراميل
+50
+كلاسيك
+50
+🌐 Website Features You Requested
+✔ WhatsApp Prefilled Order Link
+When user clicks order, it sends:
+Copy code
 
-/* --------------- TYPOGRAPHY --------------- */
-@font-face{
-  font-family: "CairoLocal";
-  src: local("Cairo"), local("Arial");
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:CairoLocal, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg,var(--accent-soft),var(--bg) 40%);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  -webkit-tap-highlight-color: transparent;
-  padding-bottom:120px;
-}
+https://wa.me/201125263455?text=Hello%20ZALABIA%20%26%20DONUTS%0AOrder:%0A[Cart%20Items]%0A%0ADelivery%20Phone:%20[Customer%20Phone]
+Delivery number = WhatsApp number (01125263455)
+🎵 TikTok (Footer)
+https://www.tiktok.com/@zalabiaanddounts?_r=1&_t=ZS-94001VJ1Acm
+🎨 UI / UX Specs (As Requested)
+Theme: Light Pink + Soft Orange Gradient
+Modern fade edges sections
+Floating animated basket
+Slide cart drawer
+Smart quantity selector
+Size selector (S / M / L / XL)
+Live total price update
+Sticky bottom order button (mobile)
+Desktop floating cart summary
+Search bar with smooth theme glow
+Rounded soft UI
+Smooth fade transitions
+Fully responsive (Mobile / Tablet / Desktop)
+🔖 Favicon & Icon
+Copy code
 
-/* ---------- Header ---------- */
-.header {
-  position:sticky;
-  top:0;
-  z-index:80;
-  backdrop-filter: blur(6px);
-  background: linear-gradient(90deg, rgba(255,111,136,0.08), rgba(255,180,122,0.04));
-  padding:14px 16px;
-  display:flex;
-  align-items:center;
-  gap:12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.03);
-}
-.brand {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex:1;
-}
-.logo {
-  width:46px;
-  height:46px;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--accent),var(--accent-2));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-weight:800;
-  box-shadow: 0 8px 20px rgba(255,111,136,0.14);
-}
-.brand h1{
-  margin:0;
-  font-size:16px;
-  line-height:1;
-}
-.brand p{margin:0;font-size:12px;color:var(--muted)}
-
-/* ---------- Controls ---------- */
-.controls{
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-.search {
-  flex:1;
-  display:flex;
-  gap:8px;
-  align-items:center;
-  background:var(--glass-2);
-  padding:8px;
-  border-radius:12px;
-  border:1px solid rgba(0,0,0,0.03);
-}
-.search input{
-  border:0; outline:0; background:transparent; font-size:14px; width:100%;
-}
-
-/* ---------- Main layout ---------- */
-.container{
-  padding:16px;
-  max-width:1100px;
-  margin:0 auto;
-}
-
-/* categories sidebar (mobile collapsible) */
-.categories {
-  display:flex;
-  gap:8px;
-  overflow:auto;
-  padding:10px 0 18px;
-}
-.cat-btn{
-  flex:0 0 auto;
-  background:transparent;
-  border:1px solid rgba(0,0,0,0.05);
-  padding:8px 12px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:13px;
-  color:var(--muted);
-  cursor:pointer;
-  transition:all .22s ease;
-}
-.cat-btn.active{
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  color:white;
-  transform:translateY(-3px);
-  box-shadow: var(--shadow);
-}
-
-/* grid of items */
-.grid{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:12px;
-}
-@media(min-width:880px){
-  .grid{ grid-template-columns: 1fr 1fr; }
-}
-
-.card{
-  background:var(--card);
-  border-radius:14px;
-  padding:12px;
-  box-shadow: var(--shadow);
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  transition:transform .18s ease;
-}
-.card:hover{ transform:translateY(-6px); }
-
-.item-left{
-  flex:1;
-}
-.item-title{
-  font-weight:800;
-  font-size:15px;
-  display:flex; justify-content:space-between; gap:12px; align-items:center;
-}
-.item-sub{ font-size:12px; color:var(--muted); margin-top:6px; }
-
-/* expand area */
-.variants{
-  margin-top:10px;
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-.variant{
-  background:linear-gradient(180deg,var(--accent-soft),#fff);
-  padding:8px 10px;
-  border-radius:999px;
-  font-weight:700;
-  font-size:13px;
-  border:1px solid rgba(0,0,0,0.03);
-  display:inline-flex;
-  gap:8px;
-  align-items:center;
-}
-
-/* add area */
-.controls-add{
-  min-width:150px;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:8px;
-}
-.price{
-  font-weight:900;
-  color:var(--accent);
-}
-.qcontrols{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  background:linear-gradient(90deg, #fff, var(--accent-soft));
-  padding:6px;
-  border-radius:999px;
-}
-.qbtn{
-  width:36px;height:36px;border-radius:999px;border:0;background:transparent;font-weight:800;font-size:18px;color:var(--accent);cursor:pointer;
-  display:inline-flex;align-items:center;justify-content:center;
-}
-.addtocart{
-  width:100%;
-  margin-top:6px;
-  padding:10px;
-  border-radius:12px;
-  border:0;
-  cursor:pointer;
-  font-weight:800;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  color:white;
-  box-shadow: 0 12px 30px rgba(255,111,136,0.12);
-}
-
-/* floating cart */
-.fcart{
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  z-index:900;
-  background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  color:white;
-  padding:12px 16px;
-  border-radius:999px;
-  box-shadow: var(--shadow);
-  display:flex;
-  gap:10px;
-  align-items:center;
-  cursor:pointer;
-}
-.fcount{ background:white;color:var(--accent);padding:4px 10px;border-radius:999px;font-weight:900; }
-
-/* drawer */
-.drawer{
-  position:fixed;
-  right:0; left:0; bottom:0;
-  transform: translateY(110%);
-  transition: transform .28s cubic-bezier(.2,.9,.3,1);
-  z-index:1000;
-}
-.drawer.show{ transform: translateY(0%); }
-.drawer-inner{
-  background: linear-gradient(180deg, rgba(255,255,255,0.98), #fff);
-  border-top-left-radius:20px;
-  border-top-right-radius:20px;
-  padding:14px;
-  box-shadow: 0 -20px 50px rgba(10,10,10,0.06);
-  max-height:80vh;
-  overflow:auto;
-}
-.cart-item{
-  display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(0,0,0,0.04);
-}
-.cart-footer{
-  padding:12px 0;
-  display:flex; gap:8px; align-items:center; justify-content:space-between;
-}
-
-/* order buttons */
-.order-actions{ display:flex; gap:8px; flex-direction:column; }
-.btn-whatsapp{ background:#25D366;color:white;padding:12px;border-radius:10px;border:0;font-weight:800; }
-.btn-phone{ background:var(--accent-2); color:white;padding:12px;border-radius:10px;border:0;font-weight:800; }
-
-/* footer */
-footer{ padding:20px;text-align:center;color:var(--muted); font-size:13px; margin-top:40px; }
-.small{ font-size:12px;color:var(--muted) }
-
-/* nice little animations */
-.open-toggle{ cursor:pointer; display:inline-flex; gap:8px; align-items:center; color:var(--muted); }
-</style>
-</head>
-<body>
-
-<!-- ============== DATA (EDIT HERE if you want) ============== -->
-<script>
-/*
- MENU_DATA structure:
- [
-   { id, category, name_ar, name_en, variants: [ { label: "S", price: 30 }, ... ] }
- ]
- 
- * I filled menu items based on the images you uploaded.
- * Edit this array to correct any names/prices easily.
-*/
-const MENU_DATA = [
-  /* ZALABIA (زبادي؟ زلابية) */
-  { id:'z1', category:'Zalabia', name_ar:'سكر', name_en:'Sugar', variants:[ {label:'S',price:30},{label:'M',price:40},{label:'L',price:60},{label:'XL',price:100} ] },
-  { id:'z2', category:'Zalabia', name_ar:'عسل', name_en:'Honey', variants:[ {label:'S',price:30},{label:'M',price:40},{label:'L',price:60},{label:'XL',price:100} ] },
-  { id:'z3', category:'Zalabia', name_ar:'نوتيلا', name_en:'Nutella', variants:[ {label:'S',price:35},{label:'M',price:50},{label:'L',price:80},{label:'XL',price:120} ] },
-  { id:'z4', category:'Zalabia', name_ar:'كريم كراميل', name_en:'Cream Caramel', variants:[ {label:'S',price:35},{label:'M',price:50},{label:'L',price:80},{label:'XL',price:120} ] },
-  { id:'z5', category:'Zalabia', name_ar:'لوتس', name_en:'Lotus', variants:[ {label:'S',price:35},{label:'M',price:50},{label:'L',price:80},{label:'XL',price:120} ] },
-
-  /* DONUTS */
-  { id:'d1', category:'Donuts', name_ar:'دونتس دارك', name_en:'Dark Donut', variants:[ {label:'single',price:50} ] },
-  { id:'d2', category:'Donuts', name_ar:'كلاسيك', name_en:'Classic', variants:[ {label:'single',price:50} ] },
-  { id:'d3', category:'Donuts', name_ar:'كراميل', name_en:'Caramel', variants:[ {label:'single',price:35} ] },
-  { id:'d4', category:'Donuts', name_ar:'نوتيلا', name_en:'Nutella', variants:[ {label:'single',price:35} ] },
-  { id:'d5', category:'Donuts', name_ar:'لوتس', name_en:'Lotus', variants:[ {label:'single',price:35} ] },
-
-  /* WAFFLE */
-  { id:'w1', category:'Waffle', name_ar:'وافل نوتيلا', name_en:'Nutella Waffle', variants:[ {label:'single',price:40} ] },
-  { id:'w2', category:'Waffle', name_ar:'وافل لوتس', name_en:'Lotus Waffle', variants:[ {label:'single',price:40} ] },
-  { id:'w3', category:'Waffle', name_ar:'وافل فراوله', name_en:'Strawberry Waffle', variants:[ {label:'single',price:35} ] },
-  { id:'w4', category:'Waffle', name_ar:'وافل شوكولاتة', name_en:'Chocolate Waffle', variants:[ {label:'single',price:40} ] },
-
-  /* MINI PANCAKE (ميني بانكيك) */
-  { id:'p1', category:'Mini Pancake', name_ar:'ميني بانكيك 10', name_en:'Mini Pancake (10 pcs)', variants:[ {label:'10',price:40} ] },
-  { id:'p2', category:'Mini Pancake', name_ar:'ميني بانكيك 15', name_en:'Mini Pancake (15 pcs)', variants:[ {label:'15',price:60} ] },
-  { id:'p3', category:'Mini Pancake', name_ar:'ميني بانكيك 20', name_en:'Mini Pancake (20 pcs)', variants:[ {label:'20',price:70} ] },
-  { id:'p4', category:'Mini Pancake', name_ar:'ميني بانكيك 25', name_en:'Mini Pancake (25 pcs)', variants:[ {label:'25',price:80} ] },
-
-  /* extra examples present in menu */
-  { id:'o1', category:'Other', name_ar:'آيس كريم صغير', name_en:'Small Ice-cream', variants:[ {label:'single',price:35} ] },
-  { id:'o2', category:'Other', name_ar:'كريب اساسي', name_en:'Classic Crepe', variants:[ {label:'single',price:50} ] }
-];
-
-/* CONTACT */
-const CONTACT = {
-  phone_local: "01125263455",
-  phone_full: "201125263455" // for wa.me use (country code +2 Egypt)
-};
-</script>
-
-<!-- ================= HEADER ================= -->
-<header class="header">
-  <div class="brand">
-    <div class="logo">Z</div>
-    <div>
-      <h1>Zalabia & Donuts</h1>
-      <p>قائمة فاخرة — Arabic First • Phone-First</p>
-    </div>
-  </div>
-
-  <div style="flex:0 0 320px;">
-    <div class="search" role="search" aria-label="قائمة البحث">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.7"><path d="M21 21l-4.35-4.35" stroke="#333" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <input type="search" id="search" placeholder="ابحث عن صنف أو نكهة — Search items..." />
-    </div>
-  </div>
-</header>
-
-<main class="container">
-  <!-- categories -->
-  <div class="categories" id="categories"></div>
-
-  <!-- grid -->
-  <section class="grid" id="menuGrid" aria-live="polite"></section>
-</main>
-
-<!-- floating cart -->
-<div class="fcart" id="fcart" onclick="toggleDrawer();">
-  <div style="display:flex;flex-direction:column;align-items:flex-start">
-    <div style="font-size:12px;opacity:.95">السلة</div>
-    <div style="font-weight:900">Zalabia & Donuts</div>
-  </div>
-  <div style="flex:1"></div>
-  <div class="fcount" id="fcount">0</div>
-</div>
-
-<!-- drawer -->
-<div class="drawer" id="drawer">
-  <div class="drawer-inner">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-weight:900">طلبك</div>
-        <div class="small">تحقق من العناصر و اختر طريقة الطلب</div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button onclick="clearCart()" style="background:transparent;border:0;color:var(--muted);font-weight:700">مسح</button>
-        <button onclick="toggleDrawer()" style="background:transparent;border:0;color:var(--muted);font-weight:700">إغلاق</button>
-      </div>
-    </div>
-
-    <div id="cartList" style="margin-top:12px"></div>
-
-    <div class="cart-footer">
-      <div>
-        <div class="small">الإجمالي</div>
-        <div style="font-weight:900;font-size:20px" id="cartTotal">0 ج.م</div>
-      </div>
-      <div style="min-width:180px">
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <button class="btn-whatsapp" onclick="orderWhatsApp()">💬 اطلب عبر واتساب</button>
-          <button class="btn-phone" onclick="orderPhone()">📞 اتصال مباشر</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- footer -->
-<footer>
-  <div style="display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap">
-    <div style="font-weight:800">Zalabia & Donuts</div>
-    <div class="small">تصميم فاخر • خفيف وسريع • يعمل Offline</div>
-  </div>
-  <div style="margin-top:8px">
-    <a href="tel:01125263455" style="color:var(--accent);text-decoration:none;font-weight:800">📞 01125263455</a>
-    <span style="margin:0 8px;color:var(--muted)">•</span>
-    <a href="https://wa.me/201125263455" style="color:#25D366;text-decoration:none;font-weight:800">💬 WhatsApp</a>
-  </div>
-  <div style="margin-top:10px;color:var(--muted)" class="small">© 2026 All rights reserved — Zalabia & Donuts</div>
-</footer>
-
-<script>
-/* ---------- app state ---------- */
-let MENU = MENU_DATA.slice();
-let CART = JSON.parse(localStorage.getItem('zalabia_cart') || "[]");
-
-/* ---------- helpers ---------- */
-function formatPrice(n){ return n + " ج.م"; }
-
-/* ---------- categories render ---------- */
-function getCategories(){
-  const cats = [...new Set(MENU.map(i=>i.category))];
-  return cats;
-}
-function renderCategories(){
-  const cont = document.getElementById('categories');
-  cont.innerHTML = '';
-  const cats = getCategories();
-  // default all
-  const allBtn = document.createElement('button');
-  allBtn.className='cat-btn active';
-  allBtn.innerText='الكل • All';
-  allBtn.onclick = ()=>{ document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active')); allBtn.classList.add('active'); renderMenu(MENU); }
-  cont.appendChild(allBtn);
-  cats.forEach(cat=>{
-    const b = document.createElement('button');
-    b.className='cat-btn';
-    b.innerText = (cat==='Zalabia'?'زلابية': (cat)) + " • " + (cat==='Zalabia'?'Zalabia':cat);
-    b.onclick = ()=>{ document.querySelectorAll('.cat-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); renderMenu(MENU.filter(it=>it.category===cat)); }
-    cont.appendChild(b);
-  });
-}
-
-/* ---------- menu render ---------- */
-function renderMenu(list){
-  const grid = document.getElementById('menuGrid');
-  grid.innerHTML = '';
-  list.forEach(item => {
-    const card = document.createElement('article');
-    card.className='card';
-    card.setAttribute('data-id', item.id);
-
-    const left = document.createElement('div'); left.className='item-left';
-    const title = document.createElement('div'); title.className='item-title';
-    const nameWrap = document.createElement('div');
-    const ar = document.createElement('div'); ar.style.fontSize='16px'; ar.style.fontWeight='900'; ar.innerText = item.name_ar;
-    const en = document.createElement('div'); en.className='item-sub'; en.innerText = item.name_en;
-    nameWrap.appendChild(ar); nameWrap.appendChild(en);
-
-    // expand toggle
-    const toggle = document.createElement('div');
-    toggle.className='open-toggle';
-    const plus = document.createElement('span'); plus.innerText = '+';
-    const lab = document.createElement('small'); lab.innerText = 'تفاصيل';
-    toggle.appendChild(plus); toggle.appendChild(lab);
-
-    title.appendChild(nameWrap); title.appendChild(toggle);
-
-    const variants = document.createElement('div'); variants.className='variants';
-    item.variants.forEach(v=>{
-      const vbtn = document.createElement('div');
-      vbtn.className='variant';
-      vbtn.innerText = `${v.label} — ${v.price} ج.م`;
-      variants.appendChild(vbtn);
-    });
-
-    left.appendChild(title);
-    left.appendChild(variants);
-
-    // right controls
-    const right = document.createElement('div'); right.className='controls-add';
-    const price = document.createElement('div'); price.className='price'; price.innerText = item.variants[0].price + " ج.م";
-    const qctrl = document.createElement('div'); qctrl.className='qcontrols';
-    const minus = document.createElement('button'); minus.className='qbtn'; minus.innerText='−';
-    const qty = document.createElement('div'); qty.style.minWidth='26px'; qty.style.textAlign='center'; qty.style.fontWeight='800'; qty.innerText='0';
-    const plusBtn = document.createElement('button'); plusBtn.className='qbtn'; plusBtn.innerText='+';
-
-    minus.onclick = ()=>{ let v = parseInt(qty.innerText)||0; if(v>0){ qty.innerText = v-1; }};
-    plusBtn.onclick = ()=>{ let v = parseInt(qty.innerText)||0; qty.innerText = v+1; };
-
-    qctrl.appendChild(minus); qctrl.appendChild(qty); qctrl.appendChild(plusBtn);
-
-    const addBtn = document.createElement('button'); addBtn.className='addtocart'; addBtn.innerText = 'أضف للسلة — Add to cart';
-    addBtn.onclick = ()=>{
-      const q = parseInt(qty.innerText) || 0;
-      if(q <= 0){ alert('اختر الكمية أولاً — select quantity'); return; }
-      // choose variant: open simple prompt to pick variant if >1
-      let chosenVar = item.variants[0];
-      if(item.variants.length > 1){
-        // if user previously clicked variant, we can choose first for now; but provide small selection modal:
-        const labels = item.variants.map((vv,idx)=>`${idx+1}) ${vv.label} - ${vv.price} ج.م`).join('\\n');
-        const pick = prompt(`اختر الصيغة رقم :\\n${labels}\\nادخل الرقم (1..${item.variants.length})`,'1');
-        const idx = Math.max(0, Math.min(item.variants.length-1, (parseInt(pick)||1) -1 ));
-        chosenVar = item.variants[idx];
-      }
-      // add to cart multiples
-      for(let i=0;i<q;i++){
-        CART.push({ id:item.id, name_ar:item.name_ar, name_en:item.name_en, variant:chosenVar.label, price:chosenVar.price });
-      }
-      saveCart();
-      qty.innerText = '0';
-      renderCartCount();
-      flashCart();
-    };
-
-    right.appendChild(price);
-    right.appendChild(qctrl);
-    right.appendChild(addBtn);
-
-    card.appendChild(left);
-    card.appendChild(right);
-
-    // expand behavior for variants with nice animation
-    toggle.onclick = ()=>{
-      if(variants.style.maxHeight && variants.style.maxHeight !== 'none'){ variants.style.maxHeight = null; variants.style.overflow = null; }
-      else{ variants.style.maxHeight = 'none'; variants.style.overflow = 'visible'; }
-    };
-
-    grid.appendChild(card);
-  });
-}
-
-/* ---------- cart ---------- */
-function saveCart(){ localStorage.setItem('zalabia_cart', JSON.stringify(CART)); }
-function renderCartCount(){ document.getElementById('fcount').innerText = CART.length; }
-function toggleDrawer(){ const d = document.getElementById('drawer'); d.classList.toggle('show'); renderCart(); }
-function clearCart(){ if(!confirm('مسح السلة بالكامل؟')) return; CART = []; saveCart(); renderCart(); renderCartCount(); }
-function flashCart(){
-  const f = document.getElementById('fcart');
-  f.animate([{ transform:'scale(1)' },{ transform:'scale(1.08)' },{ transform:'scale(1)' }], { duration:360, easing:'ease-out' });
-}
-
-/* render cart items */
-function renderCart(){
-  const list = document.getElementById('cartList');
-  list.innerHTML = '';
-  let total = 0;
-  CART.forEach((c, idx)=>{
-    const div = document.createElement('div'); div.className='cart-item';
-    const info = document.createElement('div'); info.innerHTML = `<div style="font-weight:800">${c.name_ar} — <span style="font-weight:600;color:var(--muted)">${c.name_en}</span></div>
-      <div class="small">${c.variant}</div>`;
-    const right = document.createElement('div');
-    right.innerHTML = `<div style="font-weight:900">${c.price} ج.م</div>
-      <div style="display:flex;gap:8px;margin-top:6px">
-        <button style="background:transparent;border:0;color:var(--muted);cursor:pointer" onclick="removeCart(${idx})">حذف</button>
-      </div>`;
-    div.appendChild(info); div.appendChild(right);
-    list.appendChild(div);
-    total += c.price;
-  });
-  document.getElementById('cartTotal').innerText = total + ' ج.م';
-}
-
-function removeCart(idx){ CART.splice(idx,1); saveCart(); renderCart(); renderCartCount(); }
-
-/* ---------- ordering ---------- */
-function generateMessage(){
-  if(CART.length===0) return 'السلة فارغة';
-  let msg = 'طلب جديد من Zalabia & Donuts:%0A';
-  let sum = 0;
-  const grouped = {};
-  CART.forEach(it=>{
-    const key = `${it.name_ar} (${it.variant}) - ${it.price}`;
-    grouped[key] = (grouped[key] || 0) + 1;
-    sum += it.price;
-  });
-  Object.keys(grouped).forEach((k,i)=>{
-    msg += `${i+1}) ${k} x${grouped[k]}%0A`;
-  });
-  msg += `الإجمالي: ${sum} ج.م%0A`;
-  msg += `رقم العميل: `; // user can add phone in WA
-  return msg;
-}
-function orderWhatsApp(){
-  const msg = generateMessage();
-  const url = `https://wa.me/${CONTACT.phone_full}?text=${encodeURIComponent(msg)}`;
-  window.open(url,'_blank');
-}
-function orderPhone(){ window.location.href = 'tel:' + CONTACT.phone_local; }
-
-/* ---------- search ---------- */
-document.getElementById('search').addEventListener('input', (e)=>{
-  const q = e.target.value.trim().toLowerCase();
-  if(!q){ renderMenu(MENU); return; }
-  const filtered = MENU.filter(it=>{
-    return it.name_ar.includes(q) || it.name_en.toLowerCase().includes(q) || it.category.toLowerCase().includes(q);
-  });
-  renderMenu(filtered);
-});
-
-/* ---------- init ---------- */
-function init(){
-  renderCategories();
-  renderMenu(MENU);
-  renderCartCount();
-  renderCart();
-  // progressive enhancement: restore cart count
-  window.addEventListener('beforeunload', saveCart);
-}
-init();
-
-/* expose some helpers for console tweaks */
-window.zalabia = { MENU, CART, saveCart, renderMenu, renderCategories, renderCartCount };
-</script>
-</body>
-</html>
+https://nol.pages.dev/sec/donicon.png
+🦶 Footer
+WhatsApp
+TikTok
+Phone
+© 2026 All Rights Reserved – ZALABIA & DONUTS
