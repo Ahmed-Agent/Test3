@@ -1,580 +1,281 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ZALABIA & DONUTS — Menu</title>
-  <meta name="description" content="قائمة Zalabia & Donuts — Minimal, stylish, premium UI, quick WhatsApp ordering" />
-  <link rel="icon" href="https://nol.pages.dev/sec/donicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZALABIA & DONUTS | منيو</title>
 
-  <style>
-    :root {
-      --primary: #FE3776;
-      --accent: #FEA900;
-      --bg: #fff8f9;
-      --surface: #fffdfcfa;
-      --shadow: 0 4px 24px #fe37762c;
-      --radius: 16px;
-      --border: #ffe1ea;
-      --muted: #a09aaf;
-      --cart-glow: 0 0 16px #FEA90060, 0 6px 32px #fe37766d;
-      --transition: .18s cubic-bezier(.18,.7,.23,1);
-      --tab-bg: #fbeeed;
-      --tab-accent: #FE3776;
-      --tab-inactive: #f4f7fa;
-    }
-    body {
-      background: var(--bg);
-      font-family: "Cairo", Arial, sans-serif;
-      margin:0; padding:0; color: #393a4c;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    /* --- HERO with background, glassmorphism overlay, stylish food hero section --- */
-    .hero-modern {
-      width: 100vw;
-      min-height: 310px;
-      padding-top: 0;
-      margin-bottom:32px;
-      background: linear-gradient(110deg,rgba(255,245,250,.93) 60%,rgba(255,245,210,.97)),
-        url('https://nol.pages.dev/src/donicon.png') center right/cover no-repeat;
-      position: relative;
-      box-shadow: 0 7px 48px #fea90019;
-      display: flex; align-items: flex-end;
-      overflow:hidden;
-    }
-    .hero-overlay-card {
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(4px);
-      border-radius: 2rem 2rem 0 2rem;
-      box-shadow: 0 10px 44px #fe37762c;
-      margin: 2vw 0 0 8vw;
-      padding: 28px 36px 27px 42px;
-      z-index: 2;
-      min-width:260px; max-width: 420px;
-      display: flex; flex-direction: column; align-items: flex-start;
-    }
-    .hero-brand {
-      display: flex; align-items: center; gap: 15px; margin-bottom:.7rem;
-    }
-    .hero-brand-logo {
-      width:66px;height:66px;background:linear-gradient(135deg, var(--primary), var(--accent) 88%);
-      border-radius:50%;display:flex;justify-content:center;align-items:center;
-      box-shadow: 0 6px 50px #fea90044;
-    }
-    .hero-brand-logo img { width:42px; height:42px; }
-    .hero-title {
-      font-size:2.5rem; font-weight:900; color:var(--primary); line-height:1.13;
-      letter-spacing:.7px; margin:0 0 5px 0;
-      filter: drop-shadow(0 2px 14px #fe377656);
-      background: linear-gradient(90deg,var(--primary),var(--accent));
-      background-clip:text; -webkit-background-clip:text; color:transparent;-webkit-text-fill-color:transparent;
-    }
-    .hero-line {
-      color:#232235; font-size:1.08rem; margin-bottom:7px; font-weight:700;
-    }
-    .hero-actions-modern {
-      display: flex; gap: 15px; margin-top:14px; align-items:center; flex-wrap:wrap;
-    }
-    .btn-hero {
-      background:linear-gradient(90deg,var(--primary),var(--accent));
-      color: #fff;
-      border:none; outline:none;
-      font-size:1.11rem; font-weight:900;
-      padding:9px 28px; border-radius:12px;
-      box-shadow:0 6px 24px #fe37764e;
-      cursor:pointer; transition:background var(--transition), transform var(--transition), box-shadow var(--transition);
-    }
-    .btn-hero:hover { background:linear-gradient(90deg,#fea900,var(--primary)); transform: scale(1.046) translateY(-1px);}
-    .btn-call {
-      background: var(--accent); color: #fff;
-      font-weight:900; font-size:.98rem;padding:8px 16px;border-radius:14px;border:none;
-      box-shadow:0 1px 5px #fea90028; cursor:pointer;margin-inline-start:10px;
-      display:flex;align-items:center;gap:5px;transition:background var(--transition);
-    }
-    .btn-call:hover { background:linear-gradient(90deg,#febc36,var(--accent)); }
-    @media (max-width:700px) {
-      .hero-modern { min-height:180px; background-size:160px;}
-      .hero-overlay-card { margin: 8vw 0 0 4vw; padding: 18px 8vw 19px 10px; min-width:180px;}
-      .hero-brand-logo {width:44px;height:44px;}
-      .hero-brand-logo img {width:28px;height:28px;}
-      .hero-title { font-size:1.1rem;}
-    }
+<link rel="icon" href="https://nol.pages.dev/sec/donicon.png">
 
-    /* --- CATEGORY TABS --- */
-    .modern-tabs {
-      display: flex; gap:10px; justify-content:center; align-items:center;
-      width: 100vw; overflow-x:auto; padding: 13px 0 14px 0;
-      background: var(--tab-bg); border-bottom: 2px solid var(--border);
-      position: sticky; top:0; z-index:60;
-      box-shadow: 0 4px 20px #fea90013;
-      scroll-behavior:smooth;
-    }
-    .cat-modern-tab {
-      min-width: 108px; text-align:center;
-      padding: 10px 25px; margin:0; font-size:1.08rem; font-weight:900;
-      border-radius: 90px;
-      border: none; outline:none; background: var(--tab-inactive);
-      color: #9d2862; letter-spacing:.3px; cursor:pointer; box-shadow:none;
-      transition:background var(--transition),box-shadow var(--transition),color var(--transition);
-      position: relative;
-    }
-    .cat-modern-tab.active, .cat-modern-tab:focus {
-      background: linear-gradient(92deg, var(--primary) 60%, var(--accent));
-      color:#fff; box-shadow: 0 9px 30px #fe377647;
-      transform: scale(1.08) translateY(-2px);
-    }
-    .cat-modern-tab.active:after {
-      content: ''; display:block; position:absolute;right:30%;bottom:-7px;left:30%;
-      height:5px;border-radius:20px;background:var(--accent);box-shadow:0 2px 12px #fea90049;
-      animation: popTab .6s cubic-bezier(.62,.15,.27,.97);
-    }
-    @keyframes popTab {0%{opacity:0;transform:translateY(11px);}100%{opacity:1;transform:translateY(0);}}
-    /* --- SEARCH --- */
-    .modern-searchbar {
-      max-width: 400px; margin: 21px auto 16px auto; background: var(--surface);
-      display: flex; align-items: center; box-shadow: 0 3px 18px #fea90014; border-radius: 23px; overflow: hidden;
-      border: 2px solid var(--border);
-    }
-    .modern-searchbar input {
-      flex:1; padding: 11px 15px; border:none; outline:none;
-      background: transparent; color: #38395e; font-weight:900;font-size:1rem;
-      letter-spacing:.3px; border-radius:0;
-    }
-    .modern-searchbar .search-icon {
-      padding: 0 17px; font-size:1.33rem; color:var(--primary); opacity: .65;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
 
-    /* --- MENU GRID SMART CARD --- */
-    .modern-menu-grid {
-      display:grid; grid-template-columns:repeat(auto-fill, minmax(228px,1fr));
-      gap: 22px; padding: 19px 4vw 90px 4vw; box-sizing:border-box;
-    }
-    @media (max-width:700px) { .modern-menu-grid { grid-template-columns:1fr; gap:14px; padding:10px 7vw 90px 7vw;} }
-    .modern-card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 23px 16px 18px 16px;
-      display: flex; flex-direction: column; gap: 8px; align-items: flex-start; position:relative;
-      border:3px solid transparent; transition:box-shadow var(--transition),border var(--transition),transform var(--transition);
-    }
-    .modern-card:hover { border:3px solid var(--primary); box-shadow:0 10px 38px #fe377656; transform:scale(1.02);}
-    .item-ar { font-weight:900; font-size:1.06rem; color:var(--primary);}
-    .item-en { font-size:0.89rem; color:var(--muted); font-weight:700;}
-    .item-variants { display:flex;gap:7px;flex-wrap:wrap;margin-top:3px;}
-    .variant-pill {
-      border-radius:299px; border:2px solid var(--border); background:#fff6fb;
-      color:var(--primary); padding:5px 16px; font-weight:800; font-size:.98rem; cursor:pointer;
-      margin-bottom:1px; box-shadow:none; transition:background var(--transition),color var(--transition),border var(--transition);
-    }
-    .variant-pill.selected,.variant-pill:active {
-      color:#fff; background:linear-gradient(91deg,var(--primary),var(--accent));
-      border:2px solid var(--primary); box-shadow:0 3px 11px #fea9001a;
-    }
-    /* --- FLAVORS --- */
-    .flavor-modern {
-      margin-top:5px; border-radius:999px; background:#fffbe9;
-      border:1.2px solid var(--tab-accent);
-      color:var(--primary); font-weight:800; font-size:.94rem;
-      padding: 3.2px 11px 3.2px 11px;
-      margin-bottom:2px;
-      outline:none;
-    }
-
-    /* --- MODERN CART FLOATING BUTTON + ENHANCED --- */
-    .modern-cart-float {
-      position: fixed; bottom:28px; right:22px; z-index:1003; display:flex;align-items:center;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      border-radius: 32px; min-width:136px; box-shadow: var(--cart-glow);
-      padding: 18px 28px 14px 14px; cursor:pointer; opacity:.96;
-      gap: 15px; font-size:1.13rem; font-weight:800; color: #fff;
-      transition:box-shadow .19s,opacity .13s;
-      animation: cartpulse .85s cubic-bezier(.12,.71,.28,1);
-    }
-    .modern-cart-float:hover { opacity:1; box-shadow:0 16px 56px #fea900c1,0 3px 22px #fe37761c;}
-    .modern-cart-float .basket-emoji {
-      font-size:1.5em; margin-left:2px;
-      transform:rotate(-11deg) scale(1.23);
-    }
-    .modern-cart-count {
-      background: #fff; color: var(--primary); font-size:1.09rem; padding:3px 14px;
-      border-radius:999px; font-weight:900; margin-left:7px;
-      box-shadow:0 2px 8px #fea9003e;
-      border: 2.4px solid #ffe3d7;
-    }
-    .modern-cart-float .cart-arrow {
-      font-size:1.6em;margin-inline-end:-2px; padding:0;opacity:.81;
-    }
-    @keyframes cartpulse {0%{transform:scale(.95);}50%{transform:scale(1.04);}100%{transform:scale(1);}}
-    /* --- MODERN, BEAUTIFUL CART DROPDOWN --- */
-    .modern-cart-panel {
-      display: none;
-      position:absolute; bottom: 59px; right:0; min-width:360px;
-      background: var(--surface); border-radius:23px;
-      box-shadow:0 8px 32px #fe3776b2,0 2px 12px #11111120;
-      padding:22px 18px 8px 18px; z-index:2502;
-      animation: cartSlideIn .4s cubic-bezier(.21,.82,.56,1.14);
-      border:2px solid var(--border);
-    }
-    .modern-cart-float:focus .modern-cart-panel,
-    .modern-cart-float:hover .modern-cart-panel { display:block;}
-    @keyframes cartSlideIn {0%{opacity:.2;transform:translateY(38px);}100%{opacity:1;transform:translateY(0);}}
-    .cartline {
-      display:flex;justify-content:space-between;align-items:center;
-      border-bottom:1px dashed #fed0ebe6; padding:7px 2px;
-    }
-    .cart-title-modern { font-weight:900;font-size:1.08rem;color:var(--primary);}
-    .cart-meta-modern { color:var(--muted); font-size:0.95rem; font-weight:700;}
-    .cart-btn-modern { background:transparent; border:none; color:var(--primary); font-weight:900; font-size:1.07rem; cursor:pointer;padding:0 7px;}
-    .cart-btn-modern:hover { color:var(--accent);}
-    .cart-total-modern { font-size:1.12rem; color:var(--primary); font-weight:900; padding:12px 0 5px 0;}
-    .cart-order-btn-modern {
-      width:100%; border:none; background:#25D366; color:#fff; font-weight:900; font-size:1.09rem; padding:13px 0; border-radius:18px; cursor:pointer; margin-top:11px;
-      transition:background .18s;
-      letter-spacing:.5px;
-    }
-    .cart-order-btn-modern:hover { background:#20b658;}
-    .cart-empty-modern { padding:27px 0 18px 0; color:var(--muted); text-align:center; font-size:1.01rem;}
-    @media (max-width:600px) {
-      .modern-cart-panel { min-width:97vw; right:0; left:0; }
-      .modern-cart-float { right:4vw; bottom:16px;}
-    }
-
-    /* --- Add Control Modern --- */
-    .modern-card-actions { display:flex;gap:9px;align-items:center;margin-top:7px;}
-    .min-btn-modern, .plus-btn-modern {
-      width:32px;height:32px;border-radius:50%;border:none;
-      font-weight:900;font-size:1.12rem;
-      background:linear-gradient(90deg,var(--accent),#fffbe8);
-      color:var(--primary);cursor:pointer;outline:none;
-      box-shadow:0 2px 10px #fe377626;
-      transition:background var(--transition),color var(--transition),box-shadow var(--transition);
-    }
-    .min-btn-modern:hover, .plus-btn-modern:hover { background:var(--primary); color:#fff;}
-    .count-show-modern {
-      min-width:29px;text-align:center;font-size:1.12rem;font-weight:900;color:var(--primary);background:#fff2f7;border-radius:12px;margin:0 4px;padding:3px 8px;border:none;
-    }
-    .add-btn-modern {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: #fff; border-radius: 11px; border:none;
-      font-weight:900;font-size:.97rem;cursor:pointer;box-shadow:0 3px 9px #fea90019;
-      transition:background var(--transition),transform var(--transition);outline:none;padding:6px 15px;
-    }
-    .add-btn-modern:hover { background:linear-gradient(90deg,#fea800,var(--primary)); transform: scale(1.04) translateY(-2px);}
-    /* --- FOOTER --- */
-    footer {
-      background:linear-gradient(90deg,#fff,rgba(255,246,249,.92));
-      padding:24px 14px 20px 14px; text-align:center;
-      color:var(--muted);font-size:1.07rem;margin-top:auto;border-top:2px solid var(--border);
-      margin-top:55px;
-    }
-    .footer-brand-modern { font-weight:900;font-size:1.18rem;color:var(--primary);}
-    .footer-links-modern { margin-top:7px; }
-    .footer-links-modern a { color:var(--primary); text-decoration:none; margin:0 7px; font-weight:900; font-size:.96rem; opacity:.9; transition:color .19s;}
-    .footer-links-modern a:hover { color:var(--accent);}
-  </style>
+<style>
+:root{
+    --pink:#ff2e93;
+    --orange:#ff8c42;
+    --dark:#0f0f14;
+    --light:#ffffff;
+    --gray:#f4f4f6;
+    --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif}
+body{
+    background:linear-gradient(180deg,#ffffff 0%,#fff5f9 100%);
+    color:#111;
+    overflow-x:hidden;
+}
+.hero{
+    background:linear-gradient(135deg,var(--pink),var(--orange));
+    color:white;
+    padding:60px 20px;
+    text-align:center;
+    border-bottom-left-radius:60px;
+    border-bottom-right-radius:60px;
+    position:relative;
+}
+.hero h1{font-size:32px;font-weight:800}
+.hero p{opacity:.9;margin-top:10px}
+.hero button{
+    margin-top:20px;
+    background:white;
+    color:var(--pink);
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+.hero button:hover{transform:scale(1.05)}
+.search-bar{
+    max-width:500px;
+    margin:30px auto;
+    padding:12px 20px;
+    border-radius:30px;
+    border:2px solid var(--pink);
+    outline:none;
+    width:90%;
+    transition:.3s;
+}
+.search-bar:focus{box-shadow:0 0 20px rgba(255,46,147,.3)}
+.section{
+    padding:40px 20px;
+}
+.category{
+    margin-bottom:50px;
+}
+.category-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+.category-header img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:3px solid var(--pink);
+}
+.category-header h2{
+    font-size:22px;
+    color:var(--pink);
+}
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+.item{
+    background:white;
+    padding:15px;
+    border-radius:var(--radius);
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+    transition:.3s;
+    position:relative;
+}
+.item:hover{transform:translateY(-5px)}
+.item h3{font-size:16px;margin-bottom:5px}
+.price{font-weight:700;color:var(--pink)}
+select, input[type=number]{
+    width:100%;
+    padding:8px;
+    margin-top:8px;
+    border-radius:10px;
+    border:1px solid #ddd;
+}
+.add-btn{
+    margin-top:10px;
+    background:linear-gradient(90deg,var(--pink),var(--orange));
+    color:white;
+    border:none;
+    padding:8px;
+    width:100%;
+    border-radius:20px;
+    cursor:pointer;
+}
+.cart-btn{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:linear-gradient(90deg,var(--pink),var(--orange));
+    color:white;
+    width:60px;height:60px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;
+    cursor:pointer;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+.cart-drawer{
+    position:fixed;
+    top:0;
+    left:-100%;
+    width:90%;
+    max-width:400px;
+    height:100%;
+    background:white;
+    box-shadow:5px 0 20px rgba(0,0,0,.1);
+    transition:.4s;
+    padding:20px;
+    overflow-y:auto;
+}
+.cart-drawer.active{left:0}
+.cart-item{margin-bottom:10px}
+.total{
+    font-weight:800;
+    margin-top:15px;
+    color:var(--pink);
+}
+.whatsapp-btn{
+    margin-top:15px;
+    background:#25d366;
+    color:white;
+    border:none;
+    padding:10px;
+    width:100%;
+    border-radius:20px;
+    cursor:pointer;
+}
+footer{
+    margin-top:50px;
+    background:var(--dark);
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+    border-top-left-radius:40px;
+    border-top-right-radius:40px;
+}
+footer a{
+    color:var(--pink);
+    text-decoration:none;
+    display:block;
+    margin:5px 0;
+}
+</style>
 </head>
+
 <body>
-  <!-- HERO: Modern glassmorphic card on food photo, call and WhatsApp -->
-  <section class="hero-modern">
-    <div class="hero-overlay-card">
-      <div class="hero-brand">
-        <div class="hero-brand-logo">
-          <img src="https://nol.pages.dev/sec/donicon.png" alt="Zalabia Logo">
-        </div>
-        <span class="hero-title">ZALABIA & DONUTS</span>
-      </div>
-      <div class="hero-line" style="margin-bottom:4px;">قائمة فاخرة جداً — اطلب بضغطة</div>
-      <div class="hero-line" style="color:#25D366;">
-        <b>واتساب: 01125263455</b>
-      </div>
-      <div class="hero-actions-modern">
-        <button class="btn-hero" onclick="orderWhatsApp()">💬 طلب واتساب</button>
-        <a class="btn-call" href="tel:01125263455">📞 اتصال مباشر</a>
-      </div>
-    </div>
-  </section>
-  <!-- SEARCH + CATEGORIES MODERN -->
-  <div class="modern-searchbar">
-    <input id="searchInput" type="search" placeholder="ابحث عن صنف أو نكهة..." aria-label="ابحث">
-    <span class="search-icon">🔍</span>
-  </div>
-  <nav class="modern-tabs" id="catBar"></nav>
-  <!-- MENU GRID -->
-  <main>
-    <section class="modern-menu-grid" id="menuGrid" aria-live="polite"></section>
-  </main>
-  <!-- Modern Cart Floating + Slide Panel -->
-  <div class="modern-cart-float" id="cartMin" tabindex="0" aria-label="سلة الطلب">
-    <span class="basket-emoji">🛒</span>
-    <span>سلة</span>
-    <span class="modern-cart-count" id="cartCount">0</span>
-    <span class="cart-arrow">➜</span>
-    <div class="modern-cart-panel" id="cartDropdown"></div>
-  </div>
-  <!-- Footer -->
-  <footer>
-    <div class="footer-brand-modern">ZALABIA & DONUTS</div>
-    <div class="footer-links-modern">
-      <a href="https://wa.me/201125263455" target="_blank">WhatsApp</a> •
-      <a href="https://www.tiktok.com/@zalabiaanddounts?_r=1&_t=ZS-94001VJ1Acm" id="tiktokFooter" target="_blank">TikTok</a> •
-      <a href="tel:01125263455">Phone</a>
-    </div>
-    <div style="color:var(--muted);font-size:0.97rem;">© 2026 All Rights Reserved – ZALABIA & DONUTS</div>
-  </footer>
-  <script>
-    // MENU DATA
-    const MENU_DATA = [
-      { id:"don_nutella",cat:"Donuts",name_ar:"نوتيلا",name_en:"Nutella",variants:[{label:"Single",price:35},{label:"Double",price:50}] },
-      { id:"don_whitechoc",cat:"Donuts",name_ar:"شوكولاتة بيضاء",name_en:"White Chocolate",variants:[{label:"Single",price:35},{label:"Double",price:50}] },
-      { id:"don_lotus",cat:"Donuts",name_ar:"لوتس",name_en:"Lotus",variants:[{label:"Single",price:35},{label:"Double",price:50}] },
-      { id:"don_caramel",cat:"Donuts",name_ar:"كراميل",name_en:"Caramel",variants:[{label:"Single",price:35},{label:"Double",price:50}] },
-      { id:"don_blueberry",cat:"Donuts",name_ar:"توت أزرق",name_en:"Blueberry",variants:[{label:"Single",price:35},{label:"Double",price:50}] },
-      { id:"don_strawberry",cat:"Donuts",name_ar:"فراولة",name_en:"Strawberry",variants:[{label:"Single",price:35},{label:"Double",price:50}] },
-      { id:"don_ferrero",cat:"Donuts",name_ar:"فيريرو روشيه",name_en:"Ferrero Rocher",variants:[{label:"Single",price:40},{label:"Double",price:60}] },
-      { id:"don_kinder",cat:"Donuts",name_ar:"كيندر",name_en:"Kinder",variants:[{label:"Single",price:40},{label:"Double",price:60}] },
-      { id:"don_dark",cat:"Donuts",name_ar:"دارك شوكليت",name_en:"Dark Chocolate",variants:[{label:"Single",price:40},{label:"Double",price:60}] },
-      { id:"don_yogurt",cat:"Donuts",name_ar:"زبادي",name_en:"Yogurt",variants:[{label:"Single",price:40},{label:"Double",price:60}] },
-      { id:"don_bubblegum",cat:"Donuts",name_ar:"لبان",name_en:"Bubblegum",variants:[{label:"Single",price:35},{label:"Double",price:50}] },
-      { id:"don_cotton",cat:"Donuts",name_ar:"غزل البنات",name_en:"Cotton Candy",variants:[{label:"Single",price:35},{label:"Double",price:50}] },
-      { id:"w_nutella",cat:"Waffle",name_ar:"نوتيلا",name_en:"Nutella Waffle",variants:[{label:"Single",price:35}] },
-      { id:"w_whitechoc",cat:"Waffle",name_ar:"شوكولاتة بيضاء",name_en:"White Chocolate Waffle",variants:[{label:"Single",price:35}] },
-      { id:"w_oreo",cat:"Waffle",name_ar:"اوريو",name_en:"Oreo Waffle",variants:[{label:"Single",price:35}] },
-      { id:"w_blueberry",cat:"Waffle",name_ar:"توت أزرق",name_en:"Blueberry Waffle",variants:[{label:"Single",price:35}] },
-      { id:"w_strawberry",cat:"Waffle",name_ar:"فراولة",name_en:"Strawberry Waffle",variants:[{label:"Single",price:35}] },
-      { id:"w_lotus",cat:"Waffle",name_ar:"لوتس",name_en:"Lotus Waffle",variants:[{label:"Single",price:35}] },
-      { id:"w_caramel",cat:"Waffle",name_ar:"كراميل",name_en:"Caramel Waffle",variants:[{label:"Single",price:35}] },
-      { id:"w_ferrero",cat:"Waffle",name_ar:"فيريرو روشيه",name_en:"Ferrero Waffle",variants:[{label:"Single",price:40}] },
-      { id:"w_kinder",cat:"Waffle",name_ar:"كيندر",name_en:"Kinder Waffle",variants:[{label:"Single",price:40}] },
-      { id:"w_yogurt",cat:"Waffle",name_ar:"زبادي",name_en:"Yogurt Waffle",variants:[{label:"Single",price:40}] },
-      { id:"w_dark",cat:"Waffle",name_ar:"دارك شوكليت",name_en:"Dark Chocolate Waffle",variants:[{label:"Single",price:40}] },
-      { id:"w_cotton",cat:"Waffle",name_ar:"غزل البنات",name_en:"Cotton Candy Waffle",variants:[{label:"Single",price:40}] },
-      { id:"w_bubblegum",cat:"Waffle",name_ar:"لبان",name_en:"Bubblegum Waffle",variants:[{label:"Single",price:35}] },
-      { id:"mini_10",cat:"Mini Pancake",name_ar:"ميني بانكيك — 10 قطع",name_en:"Mini Pancake (10 pcs)",variants:[{label:"10",price:40}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة"]},
-      { id:"mini_15",cat:"Mini Pancake",name_ar:"ميني بانكيك — 15 قطع",name_en:"Mini Pancake (15 pcs)",variants:[{label:"15",price:60}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة"]},
-      { id:"mini_20",cat:"Mini Pancake",name_ar:"ميني بانكيك — 20 قطع",name_en:"Mini Pancake (20 pcs)",variants:[{label:"20",price:70}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة"]},
-      { id:"mini_25",cat:"Mini Pancake",name_ar:"ميني بانكيك — 25 قطع",name_en:"Mini Pancake (25 pcs)",variants:[{label:"25",price:80}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة"]},
-      { id:"zal_sugar",cat:"Zalabia",name_ar:"سكر",name_en:"Sugar",variants:[{label:"S",price:30},{label:"M",price:40},{label:"L",price:60},{label:"XL",price:100}] },
-      { id:"zal_honey",cat:"Zalabia",name_ar:"عسل",name_en:"Honey",variants:[{label:"S",price:30},{label:"M",price:40},{label:"L",price:60},{label:"XL",price:100}] },
-      { id:"zal_nutella",cat:"Zalabia",name_ar:"نوتيلا",name_en:"Nutella",variants:[{label:"S",price:35},{label:"M",price:50},{label:"L",price:80},{label:"XL",price:120}] },
-      { id:"zal_lotus",cat:"Zalabia",name_ar:"لوتس",name_en:"Lotus",variants:[{label:"S",price:35},{label:"M",price:50},{label:"L",price:80},{label:"XL",price:120}] },
-      { id:"zal_caramel",cat:"Zalabia",name_ar:"كراميل",name_en:"Caramel",variants:[{label:"S",price:35},{label:"M",price:50},{label:"L",price:80},{label:"XL",price:120}] },
-      { id:"zal_blueberry",cat:"Zalabia",name_ar:"توت أزرق",name_en:"Blueberry",variants:[{label:"S",price:35},{label:"M",price:50},{label:"L",price:80},{label:"XL",price:120}] },
-      { id:"zal_strawberry",cat:"Zalabia",name_ar:"فراولة",name_en:"Strawberry",variants:[{label:"S",price:35},{label:"M",price:50},{label:"L",price:80},{label:"XL",price:120}] },
-      { id:"zal_white",cat:"Zalabia",name_ar:"وايت شوكليت",name_en:"White Chocolate",variants:[{label:"S",price:35},{label:"M",price:50},{label:"L",price:80},{label:"XL",price:120}] },
-      { id:"zal_dark",cat:"Zalabia",name_ar:"دارك شوكليت",name_en:"Dark Chocolate",variants:[{label:"S",price:40},{label:"M",price:60},{label:"L",price:100},{label:"XL",price:150}] },
-      { id:"zal_kinder",cat:"Zalabia",name_ar:"كيندر",name_en:"Kinder",variants:[{label:"S",price:40},{label:"M",price:60},{label:"L",price:100},{label:"XL",price:150}] },
-      { id:"ic_dark",cat:"Ice Coffee",name_ar:"دارك",name_en:"Dark",variants:[{label:"single",price:50}] },
-      { id:"ic_caramel",cat:"Ice Coffee",name_ar:"كراميل",name_en:"Caramel",variants:[{label:"single",price:50}] },
-      { id:"ic_classic",cat:"Ice Coffee",name_ar:"كلاسيك",name_en:"Classic",variants:[{label:"single",price:50}] }
-    ];
 
-    // State
-    let MENU = MENU_DATA.slice();
-    let CART = JSON.parse(localStorage.getItem('zalabia_cart_full') || '[]');
-    // Categories
-    function renderCats() {
-      const cats = ['All', ...Array.from(new Set(MENU.map(i=>i.cat)))];
-      const bar = document.getElementById('catBar'); bar.innerHTML = '';
-      cats.forEach((c,i) => {
-        const btn = document.createElement('button');
-        btn.className = 'cat-modern-tab' + (i===0?' active':'');
-        btn.innerText = (c==='All')?'الكل • All':(c==='Zalabia'?'زلابية • Zalabia':c+' • '+c);
-        btn.tabIndex = 0;
-        btn.onclick = () => {
-          Array.from(document.querySelectorAll('.cat-modern-tab')).forEach(x=>x.classList.remove('active'));
-          btn.classList.add('active');
-          renderMenu(c==='All'?MENU:MENU.filter(it=>it.cat===c));
-        };
-        bar.appendChild(btn);
-      });
-    }
-    // Render menu
-    function renderMenu(list) {
-      const grid = document.getElementById('menuGrid'); grid.innerHTML = '';
-      list.forEach(item => {
-        const card = document.createElement('article'); card.className='modern-card';
-        // Title
-        card.innerHTML = `<div class="item-ar">${item.name_ar}</div><div class="item-en">${item.name_en}</div>`;
-        // Variants
-        const variants = document.createElement('div'); variants.className='item-variants';
-        item.variants.forEach((v,idx)=>{
-          const pill = document.createElement('div'); pill.className='variant-pill';
-          pill.textContent = `${v.label} - ${v.price} ج.م`;
-          pill.tabIndex = 0;
-          if(idx===0) pill.classList.add('selected');
-          pill.onclick = () => {
-            Array.from(variants.children).forEach(x=>x.classList.remove('selected'));
-            pill.classList.add('selected');
-            updateCardActions(item, v, card, pill);
-          }
-          variants.appendChild(pill);
-        });
-        card.appendChild(variants);
-        // Flavors
-        let flavorElem = null;
-        if(item.flavors && item.flavors.length) {
-          flavorElem = document.createElement('select');
-          flavorElem.className = "flavor-modern";
-          item.flavors.forEach(f => {
-            const opt = document.createElement('option'); opt.value = f; opt.textContent = f;
-            flavorElem.appendChild(opt);
-          });
-          card.appendChild(flavorElem);
-        }
-        // Modern Actions: one plus, one minus, live count, add
-        const actions = document.createElement('div'); actions.className='modern-card-actions';
-        const minusBtn = document.createElement('button'); minusBtn.className='min-btn-modern'; minusBtn.textContent='−';
-        const plusBtn = document.createElement('button'); plusBtn.className='plus-btn-modern'; plusBtn.textContent='+';
-        const countShow = document.createElement('span'); countShow.className='count-show-modern'; countShow.textContent='0';
-        // Custom key for unique cart items
-        const updateCount = ()=>{
-          const vIdx = Array.from(variants.children).findIndex(x=>x.classList.contains('selected'));
-          const variant = item.variants[vIdx]||item.variants[0];
-          let meta = {};
-          if(item.flavors && flavorElem) meta.flavor = flavorElem.value;
-          const key = item.id + '||' + variant.label + '||' + (meta.flavor||'');
-          const found = CART.find(c => c.key === key);
-          countShow.textContent = found ? found.qty : 0;
-        };
-        plusBtn.onclick = ()=>{ // Add
-          const vIdx = Array.from(variants.children).findIndex(x=>x.classList.contains('selected'));
-          const variant = item.variants[vIdx]||item.variants[0];
-          let meta = {};
-          if(item.flavors && flavorElem) meta.flavor = flavorElem.value;
-          addToCart(item, variant, 1, meta);
-          updateCount();
-        };
-        minusBtn.onclick = ()=>{ // Remove
-          const vIdx = Array.from(variants.children).findIndex(x=>x.classList.contains('selected'));
-          const variant = item.variants[vIdx]||item.variants[0];
-          let meta = {};
-          if(item.flavors && flavorElem) meta.flavor = flavorElem.value;
-          removeOne(item, variant, meta);
-          updateCount();
-        };
-        actions.appendChild(minusBtn); actions.appendChild(countShow); actions.appendChild(plusBtn);
-        // Add-to-cart button
-        const addBtn = document.createElement('button'); addBtn.className='add-btn-modern'; addBtn.textContent='أضف للسلة';
-        addBtn.onclick = ()=> {
-          const vIdx = Array.from(variants.children).findIndex(x=>x.classList.contains('selected'));
-          const variant = item.variants[vIdx]||item.variants[0];
-          let meta = {};
-          if(item.flavors && flavorElem) meta.flavor = flavorElem.value;
-          addToCart(item, variant, 1, meta);
-          updateCount();
-        };
-        actions.appendChild(addBtn);
-        card.appendChild(actions);
-        if(flavorElem) flavorElem.onchange = updateCount;
-        grid.appendChild(card);
-        updateCount();
-      });
-    }
-    function updateCardActions(item, variant, card, pill) {
-      // Update product actions for variant selected, live count
-      const actions = card.querySelector('.modern-card-actions');
-      if(actions && actions.querySelector('.count-show-modern')) {
-        let meta = {};
-        if(item.flavors && card.querySelector('select')) meta.flavor = card.querySelector('select').value;
-        const key = item.id + '||' + variant.label + '||' + (meta.flavor||'');
-        const found = CART.find(c => c.key === key);
-        actions.querySelector('.count-show-modern').textContent = found ? found.qty : 0;
-      }
-    }
-    // Cart logic: add/remove one, live count per variant/flavor
-    function addToCart(item, variant, qty=1, meta={}) {
-      const key = item.id + '||' + variant.label + '||' + (meta.flavor||'');
-      const idx = CART.findIndex(c => c.key === key);
-      if(idx>=0) { CART[idx].qty += qty; }
-      else {
-        CART.push({
-          key, id: item.id, name_ar: item.name_ar, name_en: item.name_en,
-          variant: variant.label, price: variant.price, qty: qty, meta: meta
-        });
-      }
-      saveCart(); renderCartCount(); renderDropdownCart();
-    }
-    function removeOne(item, variant, meta={}) {
-      const key = item.id + '||' + variant.label + '||' + (meta.flavor||'');
-      const idx = CART.findIndex(c => c.key === key);
-      if(idx>=0) {
-        CART[idx].qty -= 1;
-        if(CART[idx].qty<=0) CART.splice(idx,1);
-        saveCart(); renderCartCount(); renderDropdownCart();
-      }
-    }
-    function saveCart() { localStorage.setItem('zalabia_cart_full', JSON.stringify(CART)); }
-    function calcTotal() { return CART.reduce((s,i)=>(s+(i.price||0)*(i.qty||1)),0); }
-    function renderCartCount() {
-      document.getElementById('cartCount').innerText = CART.reduce((s,i)=>s+i.qty,0);
-      // Cart jump if added
-    }
-    // Modern slide-out panel for cart
-    function renderDropdownCart() {
-      const dropdown = document.getElementById('cartDropdown');
-      dropdown.innerHTML = '';
-      if(CART.length==0) { dropdown.innerHTML=`<div class="cart-empty-modern">السلة فارغة</div>`; return;}
-      CART.forEach((c,idx)=>{
-        const row = document.createElement('div'); row.className='cartline';
-        let flavorLine = c.meta && c.meta.flavor ? `<span class="cart-meta-modern">${c.meta.flavor}</span>` : '';
-        row.innerHTML = `<span class="cart-title-modern">${c.name_ar} - ${c.variant}</span> <span>×${c.qty} = ${c.price*c.qty} ج.م</span>`;
-        // remove single
-        const removeBtn = document.createElement('button'); removeBtn.className='cart-btn-modern'; removeBtn.textContent='−';
-        removeBtn.onclick = ()=>{ c.qty--; if(c.qty<=0) CART.splice(idx,1); saveCart(); renderCartCount(); renderDropdownCart();}
-        row.appendChild(removeBtn);
-        dropdown.appendChild(row);
-        if(flavorLine) {
-          const metaDiv = document.createElement('div');
-          metaDiv.innerHTML = flavorLine;
-          metaDiv.style.marginRight="14px";
-          dropdown.appendChild(metaDiv);
-        }
-      });
-      // total, order btn
-      const totalDiv = document.createElement('div'); totalDiv.className='cart-total-modern';
-      totalDiv.innerHTML = `الإجمالي: ${calcTotal()} ج.م`;
-      dropdown.appendChild(totalDiv);
-      const orderBtn = document.createElement('button'); orderBtn.className='cart-order-btn-modern'; orderBtn.textContent = '💬 طلب واتساب';
-      orderBtn.onclick = orderWhatsApp;
-      dropdown.appendChild(orderBtn);
-    }
-    // Ordering
-    const CONTACT={local:"01125263455",full:"201125263455"};
-    function generateMessage(){
-      if(CART.length===0) return '';
-      let msg = `Hello ZALABIA & DONUTS%0AOrder:%0A`,total=0;
-      CART.forEach((c,i)=>{
-        let meta = c.meta && c.meta.flavor ? ` (${c.meta.flavor})` : '';
-        msg += `${i+1}) ${c.name_ar} - ${c.variant}${meta} x${c.qty} = ${c.price * c.qty} ج.م%0A`;
-        total += c.price * c.qty;
-      });
-      msg += `%0ADelivery Phone: `;
-      msg += `%0ATotal: ${total} ج.م`;
-      return msg;
-    }
-    function orderWhatsApp(){
-      const msg = generateMessage();
-      if(!msg){ alert('السلة فارغة'); return; }
-      window.open(`https://wa.me/${CONTACT.full}?text=${encodeURIComponent(msg)}`,'_blank');
-    }
-    // Search
-    document.getElementById('searchInput').addEventListener('input',function(e){
-      const q = e.target.value.trim().toLowerCase();
-      if(!q) { renderMenu(MENU); return;}
-      const filtered = MENU.filter(it=>it.name_ar.includes(q)||it.name_en.toLowerCase().includes(q)||it.cat.toLowerCase().includes(q)||(it.flavors&&it.flavors.some(f=>f.includes(q))));
-      renderMenu(filtered);
+<div class="hero">
+<h1>🍩 ZALABIA & DONUTS</h1>
+<p>ألذ طعم يخليك تطلب تاني فوراً 🔥</p>
+<button onclick="openCart()">اطلب الآن</button>
+</div>
+
+<input class="search-bar" placeholder="ابحث عن منتج...">
+
+<div class="section">
+
+<!-- Donuts -->
+<div class="category">
+<div class="category-header">
+<img src="donuts.png">
+<h2>🍩 Donuts</h2>
+</div>
+<div class="menu-grid" id="donuts"></div>
+</div>
+
+<!-- Waffle -->
+<div class="category">
+<div class="category-header">
+<img src="waffle.png">
+<h2>🧇 Waffle</h2>
+</div>
+<div class="menu-grid" id="waffle"></div>
+</div>
+
+<!-- Mini Pancake -->
+<div class="category">
+<div class="category-header">
+<img src="pancake.png">
+<h2>🥞 Mini Pancake</h2>
+</div>
+<div class="menu-grid" id="pancake"></div>
+</div>
+
+<!-- Zalabia -->
+<div class="category">
+<div class="category-header">
+<img src="Zalabia.png">
+<h2>🍯 Zalabia</h2>
+</div>
+<div class="menu-grid" id="zalabia"></div>
+</div>
+
+<!-- Ice Coffee -->
+<div class="category">
+<div class="category-header">
+<img src="ice.png">
+<h2>☕ Ice Coffee</h2>
+</div>
+<div class="menu-grid" id="coffee"></div>
+</div>
+
+</div>
+
+<div class="cart-btn" onclick="openCart()">🛒</div>
+
+<div class="cart-drawer" id="cartDrawer">
+<h2>سلة الطلب</h2>
+<div id="cartItems"></div>
+<div class="total" id="totalPrice">الإجمالي: 0 جنيه</div>
+<button class="whatsapp-btn" onclick="sendWhatsApp()">اطلب عبر واتساب</button>
+</div>
+
+<footer>
+<h3>🔥 طعم يخليك تدمنه</h3>
+<a href="https://wa.me/201125263455">📱 واتساب: 01125263455</a>
+<a href="https://www.tiktok.com/@zalabiaanddounts?_r=1&_t=ZS-94001VJ1Acm">🎵 TikTok</a>
+<p>© 2026 All Rights Reserved – ZALABIA & DONUTS</p>
+</footer>
+
+<script>
+const cart=[];
+function addItem(name,price){
+    cart.push({name,price});
+    updateCart();
+}
+function updateCart(){
+    const container=document.getElementById("cartItems");
+    container.innerHTML="";
+    let total=0;
+    cart.forEach(item=>{
+        total+=item.price;
+        container.innerHTML+=`<div class="cart-item">${item.name} - ${item.price} جنيه</div>`;
     });
+    document.getElementById("totalPrice").innerText="الإجمالي: "+total+" جنيه";
+}
+function openCart(){
+    document.getElementById("cartDrawer").classList.toggle("active");
+}
+function sendWhatsApp(){
+    let message="مرحباً 👋 أريد طلب:\n";
+    cart.forEach(i=>message+=i.name+" - "+i.price+" جنيه\n");
+    let total=cart.reduce((a,b)=>a+b.price,0);
+    message+="\nالإجمالي: "+total+" جنيه 💖";
+    window.open("https://wa.me/201125263455?text="+encodeURIComponent(message));
+}
+</script>
 
-    function init(){
-      renderCats(); renderMenu(MENU); renderCartCount(); renderDropdownCart();
-      document.getElementById('tiktokFooter').href = "https://www.tiktok.com/@zalabiaanddounts?_r=1&_t=ZS-94001VJ1Acm";
-    }
-    init();
-    window.zal = {MENU, CART, addToCart, renderMenu};
-  </script>
 </body>
 </html>
