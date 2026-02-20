@@ -7,289 +7,324 @@
   <meta name="description" content="قائمة Zalabia & Donuts — Minimal, stylish, premium UI, quick WhatsApp ordering" />
   <link rel="icon" href="https://nol.pages.dev/sec/donicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --primary: #ff2e63;
-      --accent: #ffb470;
-      --bg: #fff5f8;
-      --muted: #9b838d;
-      --surface: rgba(255,255,255,0.9);
-      --glass: rgba(255,245,248,0.79);
-      --border: #faecf5;
-      --shadow-sm: 0 3px 18px #ff2e6337;
-      --radius-lg: 24px;
-      --radius-md: 15px;
-      --radius-sm: 8px;
-      --transition: 220ms cubic-bezier(.16,.73,.24,.98);
+      --primary: #FE3776;
+      --accent: #FEA900;
+      --bg: #fff8f9;
+      --surface: #fffdfcfa;
+      --shadow: 0 4px 24px #fe37762c;
+      --radius: 16px;
+      --border: #ffe1ea;
+      --muted: #a09aaf;
+      --cart-glow: 0 0 16px #FEA90060, 0 6px 32px #fe37766d;
+      --transition: .18s cubic-bezier(.18,.7,.23,1);
+      --tab-bg: #fbeeed;
+      --tab-accent: #FE3776;
+      --tab-inactive: #f4f7fa;
     }
     body {
-      font-family: "Cairo", system-ui, Arial, sans-serif;
       background: var(--bg);
-      margin: 0; padding: 0;
-      min-height: 100vh; color: #353b47;
-    }
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 370px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(185deg, var(--bg) 70%, #fff 100%), url('https://nol.pages.dev/sec/donicon.png') center/240px no-repeat;
-      margin-bottom:32px;
-      box-shadow: 0 4px 28px #ffb47022;
-    }
-    .hero-inner {
+      font-family: "Cairo", Arial, sans-serif;
+      margin:0; padding:0; color: #393a4c;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      padding: 40px 0 0 0;
-      z-index: 1;
     }
-    .hero-logo {
-      width: 88px; height: 88px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--accent) 88%);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 40px #ff2e6368;
-      margin-bottom:3px;
+    /* --- HERO with background, glassmorphism overlay, stylish food hero section --- */
+    .hero-modern {
+      width: 100vw;
+      min-height: 310px;
+      padding-top: 0;
+      margin-bottom:32px;
+      background: linear-gradient(110deg,rgba(255,245,250,.93) 60%,rgba(255,245,210,.97)),
+        url('https://nol.pages.dev/src/donicon.png') center right/cover no-repeat;
+      position: relative;
+      box-shadow: 0 7px 48px #fea90019;
+      display: flex; align-items: flex-end;
+      overflow:hidden;
     }
-    .hero-logo img { width: 54px; height: 54px;}
+    .hero-overlay-card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem 2rem 0 2rem;
+      box-shadow: 0 10px 44px #fe37762c;
+      margin: 2vw 0 0 8vw;
+      padding: 28px 36px 27px 42px;
+      z-index: 2;
+      min-width:260px; max-width: 420px;
+      display: flex; flex-direction: column; align-items: flex-start;
+    }
+    .hero-brand {
+      display: flex; align-items: center; gap: 15px; margin-bottom:.7rem;
+    }
+    .hero-brand-logo {
+      width:66px;height:66px;background:linear-gradient(135deg, var(--primary), var(--accent) 88%);
+      border-radius:50%;display:flex;justify-content:center;align-items:center;
+      box-shadow: 0 6px 50px #fea90044;
+    }
+    .hero-brand-logo img { width:42px; height:42px; }
     .hero-title {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--primary);
-      margin-bottom: .33em;
-      letter-spacing:0.5px;
-    }
-    .hero-desc {
-      color: var(--muted); font-size: 1.09rem; font-weight:700;
-      text-align: center;
-      margin-bottom: 6px;
-      letter-spacing:0.4px;
-      max-width:360px;
-    }
-    .hero-actions { display:flex; gap:8px; }
-    .hero-btn {
+      font-size:2.5rem; font-weight:900; color:var(--primary); line-height:1.13;
+      letter-spacing:.7px; margin:0 0 5px 0;
+      filter: drop-shadow(0 2px 14px #fe377656);
       background: linear-gradient(90deg,var(--primary),var(--accent));
-      color:#fff; border:none; font-weight:900; font-size:1.19rem; padding:10px 20px;
-      border-radius: var(--radius-md);
-      box-shadow: 0 6px 28px #ff2e637b;
-      cursor:pointer; transition:background var(--transition),transform var(--transition);
-      display:flex;align-items:center;gap:8px; outline:none;
+      background-clip:text; -webkit-background-clip:text; color:transparent;-webkit-text-fill-color:transparent;
     }
-    .hero-btn:hover { background:linear-gradient(90deg,#ff2877,var(--accent)); transform:translateY(-2px) scale(1.03); }
-    @media (max-width:600px) {
-      .hero { height:256px; background-size:120px; }
-      .hero-logo { width:54px; height:54px; }
-      .hero-logo img { width:38px; height:38px;}
-      .hero-inner { padding-top:26px; }
-      .hero-title { font-size:1.22rem; }
-      .hero-desc { font-size:0.98rem; max-width:220px;}
+    .hero-line {
+      color:#232235; font-size:1.08rem; margin-bottom:7px; font-weight:700;
     }
-
-    /* Minimal Search Bar */
-    .search-bar {
-      display:flex;align-items:center;justify-content:center;padding:0 0 12px 0;margin-bottom:12px;
+    .hero-actions-modern {
+      display: flex; gap: 15px; margin-top:14px; align-items:center; flex-wrap:wrap;
     }
-    .search-input {
-      width: 100%; max-width: 370px;
-      font-size: 1.1rem;
-      padding: 9px 42px 9px 14px;
-      border: 2px solid var(--border);
-      border-radius: var(--radius-lg);
-      background: var(--glass);
-      color:#353b47; font-weight:700;
-      transition: border .12s;
-      outline:none;
-      box-shadow:0 2px 16px #faecf552;
-    }
-    .search-input:focus { border-color: var(--primary);}
-    .search-icon {
-      position:absolute; right:22px; color:var(--muted); font-size:1.33rem; opacity:.63;
-    }
-    .search-container { position:relative;width:100%;max-width:370px; }
-
-    /* Category Bar */
-    .cat-bar {
-      display:flex;gap:10px;overflow-x:auto;padding:4px 0 11px 0;margin-bottom:5px;justify-content:center;
-      scrollbar-width:thin;
-    }
-    .cat-btn {
-      background: var(--surface); border:2px solid var(--border);
-      border-radius:999px;font-weight:900;font-size:1.04rem;
-      color:var(--muted); padding:8px 17px; cursor:pointer; outline:none; transition:all var(--transition);
-      box-shadow:none;white-space:nowrap;
-    }
-    .cat-btn.active, .cat-btn:focus {
+    .btn-hero {
       background:linear-gradient(90deg,var(--primary),var(--accent));
-      border-color:var(--primary);color:#fff;transform:translateY(-2px);box-shadow:0 2px 18px #fff5f822;
+      color: #fff;
+      border:none; outline:none;
+      font-size:1.11rem; font-weight:900;
+      padding:9px 28px; border-radius:12px;
+      box-shadow:0 6px 24px #fe37764e;
+      cursor:pointer; transition:background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-hero:hover { background:linear-gradient(90deg,#fea900,var(--primary)); transform: scale(1.046) translateY(-1px);}
+    .btn-call {
+      background: var(--accent); color: #fff;
+      font-weight:900; font-size:.98rem;padding:8px 16px;border-radius:14px;border:none;
+      box-shadow:0 1px 5px #fea90028; cursor:pointer;margin-inline-start:10px;
+      display:flex;align-items:center;gap:5px;transition:background var(--transition);
+    }
+    .btn-call:hover { background:linear-gradient(90deg,#febc36,var(--accent)); }
+    @media (max-width:700px) {
+      .hero-modern { min-height:180px; background-size:160px;}
+      .hero-overlay-card { margin: 8vw 0 0 4vw; padding: 18px 8vw 19px 10px; min-width:180px;}
+      .hero-brand-logo {width:44px;height:44px;}
+      .hero-brand-logo img {width:28px;height:28px;}
+      .hero-title { font-size:1.1rem;}
     }
 
-    /* Menu Grid */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px; padding: 14px 24px 60px 24px; box-sizing: border-box;
+    /* --- CATEGORY TABS --- */
+    .modern-tabs {
+      display: flex; gap:10px; justify-content:center; align-items:center;
+      width: 100vw; overflow-x:auto; padding: 13px 0 14px 0;
+      background: var(--tab-bg); border-bottom: 2px solid var(--border);
+      position: sticky; top:0; z-index:60;
+      box-shadow: 0 4px 20px #fea90013;
+      scroll-behavior:smooth;
     }
-    @media (max-width:700px) { .menu-grid { grid-template-columns:1fr; padding:8px 7vw 60px 7vw; } }
+    .cat-modern-tab {
+      min-width: 108px; text-align:center;
+      padding: 10px 25px; margin:0; font-size:1.08rem; font-weight:900;
+      border-radius: 90px;
+      border: none; outline:none; background: var(--tab-inactive);
+      color: #9d2862; letter-spacing:.3px; cursor:pointer; box-shadow:none;
+      transition:background var(--transition),box-shadow var(--transition),color var(--transition);
+      position: relative;
+    }
+    .cat-modern-tab.active, .cat-modern-tab:focus {
+      background: linear-gradient(92deg, var(--primary) 60%, var(--accent));
+      color:#fff; box-shadow: 0 9px 30px #fe377647;
+      transform: scale(1.08) translateY(-2px);
+    }
+    .cat-modern-tab.active:after {
+      content: ''; display:block; position:absolute;right:30%;bottom:-7px;left:30%;
+      height:5px;border-radius:20px;background:var(--accent);box-shadow:0 2px 12px #fea90049;
+      animation: popTab .6s cubic-bezier(.62,.15,.27,.97);
+    }
+    @keyframes popTab {0%{opacity:0;transform:translateY(11px);}100%{opacity:1;transform:translateY(0);}}
+    /* --- SEARCH --- */
+    .modern-searchbar {
+      max-width: 400px; margin: 21px auto 16px auto; background: var(--surface);
+      display: flex; align-items: center; box-shadow: 0 3px 18px #fea90014; border-radius: 23px; overflow: hidden;
+      border: 2px solid var(--border);
+    }
+    .modern-searchbar input {
+      flex:1; padding: 11px 15px; border:none; outline:none;
+      background: transparent; color: #38395e; font-weight:900;font-size:1rem;
+      letter-spacing:.3px; border-radius:0;
+    }
+    .modern-searchbar .search-icon {
+      padding: 0 17px; font-size:1.33rem; color:var(--primary); opacity: .65;
+    }
 
-    /* Menu Card */
-    .menu-card {
+    /* --- MENU GRID SMART CARD --- */
+    .modern-menu-grid {
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(228px,1fr));
+      gap: 22px; padding: 19px 4vw 90px 4vw; box-sizing:border-box;
+    }
+    @media (max-width:700px) { .modern-menu-grid { grid-template-columns:1fr; gap:14px; padding:10px 7vw 90px 7vw;} }
+    .modern-card {
       background: var(--surface);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-      padding: 18px 14px 12px 14px;
-      display: flex; flex-direction: column; gap: 9px;
-      align-items: flex-start; min-height:130px;
-      border:2px solid var(--border);
-      position:relative; transition:box-shadow var(--transition),transform var(--transition);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 23px 16px 18px 16px;
+      display: flex; flex-direction: column; gap: 8px; align-items: flex-start; position:relative;
+      border:3px solid transparent; transition:box-shadow var(--transition),border var(--transition),transform var(--transition);
     }
-    .menu-card:hover { box-shadow:0 7px 26px #ff2e633a; transform:translateY(-7px) scale(1.013); border-color:var(--primary); }
-    .item-ar { font-weight:900;font-size:1.07rem; color:var(--primary);}
+    .modern-card:hover { border:3px solid var(--primary); box-shadow:0 10px 38px #fe377656; transform:scale(1.02);}
+    .item-ar { font-weight:900; font-size:1.06rem; color:var(--primary);}
     .item-en { font-size:0.89rem; color:var(--muted); font-weight:700;}
-    .item-variants {
-      display:flex;gap:8px;flex-wrap:wrap;margin-top:1px;
-    }
+    .item-variants { display:flex;gap:7px;flex-wrap:wrap;margin-top:3px;}
     .variant-pill {
-      border-radius:999px; border:2px solid var(--border); background:var(--surface);
-      color:var(--primary); padding:5px 13px 5px 13px;font-weight:800;font-size:1rem; cursor:pointer;transition:background var(--transition),box-shadow var(--transition),border var(--transition);
-      box-shadow:none;
+      border-radius:299px; border:2px solid var(--border); background:#fff6fb;
+      color:var(--primary); padding:5px 16px; font-weight:800; font-size:.98rem; cursor:pointer;
+      margin-bottom:1px; box-shadow:none; transition:background var(--transition),color var(--transition),border var(--transition);
     }
-    .variant-pill.selected, .variant-pill:active {
-      border-color:var(--primary);background:linear-gradient(90deg,#fff5f8,var(--primary) 48%,var(--accent));color:#fff;box-shadow:0 2px 8px #ff2e633a;
+    .variant-pill.selected,.variant-pill:active {
+      color:#fff; background:linear-gradient(91deg,var(--primary),var(--accent));
+      border:2px solid var(--primary); box-shadow:0 3px 11px #fea9001a;
+    }
+    /* --- FLAVORS --- */
+    .flavor-modern {
+      margin-top:5px; border-radius:999px; background:#fffbe9;
+      border:1.2px solid var(--tab-accent);
+      color:var(--primary); font-weight:800; font-size:.94rem;
+      padding: 3.2px 11px 3.2px 11px;
+      margin-bottom:2px;
+      outline:none;
     }
 
-    /* Add/Remove Mini UX */
-    .card-actions {
-      display:flex;gap:7px;align-items:center;margin-top:8px;
+    /* --- MODERN CART FLOATING BUTTON + ENHANCED --- */
+    .modern-cart-float {
+      position: fixed; bottom:28px; right:22px; z-index:1003; display:flex;align-items:center;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 32px; min-width:136px; box-shadow: var(--cart-glow);
+      padding: 18px 28px 14px 14px; cursor:pointer; opacity:.96;
+      gap: 15px; font-size:1.13rem; font-weight:800; color: #fff;
+      transition:box-shadow .19s,opacity .13s;
+      animation: cartpulse .85s cubic-bezier(.12,.71,.28,1);
     }
-    .min-btn, .plus-btn {
-      width:34px;height:34px;border-radius:50%;border:none;font-weight:900;font-size:1.11rem;
+    .modern-cart-float:hover { opacity:1; box-shadow:0 16px 56px #fea900c1,0 3px 22px #fe37761c;}
+    .modern-cart-float .basket-emoji {
+      font-size:1.5em; margin-left:2px;
+      transform:rotate(-11deg) scale(1.23);
+    }
+    .modern-cart-count {
+      background: #fff; color: var(--primary); font-size:1.09rem; padding:3px 14px;
+      border-radius:999px; font-weight:900; margin-left:7px;
+      box-shadow:0 2px 8px #fea9003e;
+      border: 2.4px solid #ffe3d7;
+    }
+    .modern-cart-float .cart-arrow {
+      font-size:1.6em;margin-inline-end:-2px; padding:0;opacity:.81;
+    }
+    @keyframes cartpulse {0%{transform:scale(.95);}50%{transform:scale(1.04);}100%{transform:scale(1);}}
+    /* --- MODERN, BEAUTIFUL CART DROPDOWN --- */
+    .modern-cart-panel {
+      display: none;
+      position:absolute; bottom: 59px; right:0; min-width:360px;
+      background: var(--surface); border-radius:23px;
+      box-shadow:0 8px 32px #fe3776b2,0 2px 12px #11111120;
+      padding:22px 18px 8px 18px; z-index:2502;
+      animation: cartSlideIn .4s cubic-bezier(.21,.82,.56,1.14);
+      border:2px solid var(--border);
+    }
+    .modern-cart-float:focus .modern-cart-panel,
+    .modern-cart-float:hover .modern-cart-panel { display:block;}
+    @keyframes cartSlideIn {0%{opacity:.2;transform:translateY(38px);}100%{opacity:1;transform:translateY(0);}}
+    .cartline {
+      display:flex;justify-content:space-between;align-items:center;
+      border-bottom:1px dashed #fed0ebe6; padding:7px 2px;
+    }
+    .cart-title-modern { font-weight:900;font-size:1.08rem;color:var(--primary);}
+    .cart-meta-modern { color:var(--muted); font-size:0.95rem; font-weight:700;}
+    .cart-btn-modern { background:transparent; border:none; color:var(--primary); font-weight:900; font-size:1.07rem; cursor:pointer;padding:0 7px;}
+    .cart-btn-modern:hover { color:var(--accent);}
+    .cart-total-modern { font-size:1.12rem; color:var(--primary); font-weight:900; padding:12px 0 5px 0;}
+    .cart-order-btn-modern {
+      width:100%; border:none; background:#25D366; color:#fff; font-weight:900; font-size:1.09rem; padding:13px 0; border-radius:18px; cursor:pointer; margin-top:11px;
+      transition:background .18s;
+      letter-spacing:.5px;
+    }
+    .cart-order-btn-modern:hover { background:#20b658;}
+    .cart-empty-modern { padding:27px 0 18px 0; color:var(--muted); text-align:center; font-size:1.01rem;}
+    @media (max-width:600px) {
+      .modern-cart-panel { min-width:97vw; right:0; left:0; }
+      .modern-cart-float { right:4vw; bottom:16px;}
+    }
+
+    /* --- Add Control Modern --- */
+    .modern-card-actions { display:flex;gap:9px;align-items:center;margin-top:7px;}
+    .min-btn-modern, .plus-btn-modern {
+      width:32px;height:32px;border-radius:50%;border:none;
+      font-weight:900;font-size:1.12rem;
       background:linear-gradient(90deg,var(--accent),#fffbe8);
       color:var(--primary);cursor:pointer;outline:none;
-      box-shadow:0 2px 10px #ffb47022;
-      transition:background var(--transition);
+      box-shadow:0 2px 10px #fe377626;
+      transition:background var(--transition),color var(--transition),box-shadow var(--transition);
     }
-    .min-btn:hover, .plus-btn:hover { background:var(--primary); color:#fff;}
-    .count-show {
-      min-width:29px;text-align:center;font-size:1.18rem;font-weight:900;color:var(--primary-dark);background:var(--glass);border-radius:var(--radius-sm);margin:0 4px;
-      padding:2px 6px;
-      border:none;outline:none;
+    .min-btn-modern:hover, .plus-btn-modern:hover { background:var(--primary); color:#fff;}
+    .count-show-modern {
+      min-width:29px;text-align:center;font-size:1.12rem;font-weight:900;color:var(--primary);background:#fff2f7;border-radius:12px;margin:0 4px;padding:3px 8px;border:none;
     }
-    .add-btn {
+    .add-btn-modern {
       background: linear-gradient(90deg, var(--primary), var(--accent));
-      color:#fff;border-radius:var(--radius-md);border:none;font-weight:900;font-size:1.09rem;cursor:pointer;box-shadow:0 3px 12px #ff2e6327;
-      transition:background var(--transition);outline:none;padding:6px 16px;
+      color: #fff; border-radius: 11px; border:none;
+      font-weight:900;font-size:.97rem;cursor:pointer;box-shadow:0 3px 9px #fea90019;
+      transition:background var(--transition),transform var(--transition);outline:none;padding:6px 15px;
     }
-    .add-btn:hover { background:linear-gradient(90deg,#ff2877,var(--accent)); }
-    /* Cart Floating Stylish / Hover */
-    .cart-min {
-      position:fixed; bottom:28px; left:28px;
-      background:linear-gradient(90deg,var(--primary) 70%,var(--accent));
-      border-radius:999px; min-width:110px; padding:9px 19px;
-      color:#fff;font-weight:900;font-size:1.03rem;box-shadow:0 7px 38px #ff2e633a,0 2px 12px #11111125;
-      display:flex;align-items:center;gap:14px;cursor:pointer;z-index:1002;opacity:.94;transition:box-shadow .18s;
-    }
-    .cart-min:hover { box-shadow:0 16px 56px #ff2e6381,0 3px 22px #11111139; opacity:1; }
-    .cart-count {
-      background:#fff;color:var(--primary);font-size:1.09rem;padding:4px 13px;border-radius:999px;font-weight:900;
-    }
-    .cart-dropdown {
-      position:absolute; bottom:50px; left:0; min-width:330px; background:var(--surface); 
-      border-radius:var(--radius-lg); box-shadow:0 7px 32px #ff2e6381,0 2px 12px #11111131;
-      padding:18px 12px; display:none; z-index:2001;
-      animation:dropdownCart .36s cubic-bezier(.18,.7,.23,1);
-    }
-    @keyframes dropdownCart {
-      0% { opacity:0; transform:translateY(32px) scale(0.97);}
-      100% { opacity:1; transform:translateY(0) scale(1);}
-    }
-    .cart-min:hover .cart-dropdown, .cart-min:focus .cart-dropdown { display:block; }
-    .cart-line { display:flex;justify-content:space-between;align-items:center;border-bottom:1px dashed #eedeee55;padding:5px 2px;}
-    .cart-title { font-weight:900;font-size:1.04rem;color:var(--primary);}
-    .cart-meta { color:var(--muted); font-size:0.92rem; font-weight:700;}
-    .cart-actions { display:flex;gap:5px;align-items:center;}
-    .cart-btn { background:transparent;border:none;color:var(--primary);font-weight:900;font-size:1rem;padding:2px;cursor:pointer; }
-    .cart-btn:hover { color:var(--accent);}
-    .cart-total { font-size:1.09rem; color:var(--primary); font-weight:900; padding:10px 0 3px 0;}
-    .cart-order-btn {
-      width:100%;border:none;background:#25D366;color:#fff;font-weight:900;font-size:1.05rem;padding:10px 0;border-radius:var(--radius-md); cursor:pointer;margin-top:9px;
-      transition:background .18s;
-    }
-    .cart-order-btn:hover { background:#20b658;}
-    .cart-empty { padding:27px 0 18px 0; color:var(--muted); text-align:center; font-size:0.99rem;}
-    @media (max-width:700px) {
-      .cart-dropdown { min-width:96vw; left:0; right:0; }
-      .cart-min { left:6vw; bottom:24px;}
-    }
-
-    /* Footer */
+    .add-btn-modern:hover { background:linear-gradient(90deg,#fea800,var(--primary)); transform: scale(1.04) translateY(-2px);}
+    /* --- FOOTER --- */
     footer {
-      background:linear-gradient(90deg,#fff,rgba(255,246,249,.88));
-      padding:20px 14px 16px 14px;
-      text-align:center;color:var(--muted);font-size:1.05rem;margin-top:auto;border-top:1.5px solid var(--border);
+      background:linear-gradient(90deg,#fff,rgba(255,246,249,.92));
+      padding:24px 14px 20px 14px; text-align:center;
+      color:var(--muted);font-size:1.07rem;margin-top:auto;border-top:2px solid var(--border);
+      margin-top:55px;
     }
-    .footer-brand { font-weight:900;font-size:1.19rem;color:var(--primary);}
-    .footer-links { margin-top:8px; }
-    .footer-links a { color:var(--primary); text-decoration:none; margin:0 7px; font-weight:900; font-size:.96rem; opacity:.9; transition:color .19s;}
-    .footer-links a:hover { color:var(--accent);}
+    .footer-brand-modern { font-weight:900;font-size:1.18rem;color:var(--primary);}
+    .footer-links-modern { margin-top:7px; }
+    .footer-links-modern a { color:var(--primary); text-decoration:none; margin:0 7px; font-weight:900; font-size:.96rem; opacity:.9; transition:color .19s;}
+    .footer-links-modern a:hover { color:var(--accent);}
   </style>
 </head>
 <body>
-  <!-- HERO: Minimal, stylish, subtle bg, centered -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-logo">
-        <img src="https://nol.pages.dev/sec/donicon.png" alt="Zalabia Logo">
+  <!-- HERO: Modern glassmorphic card on food photo, call and WhatsApp -->
+  <section class="hero-modern">
+    <div class="hero-overlay-card">
+      <div class="hero-brand">
+        <div class="hero-brand-logo">
+          <img src="https://nol.pages.dev/sec/donicon.png" alt="Zalabia Logo">
+        </div>
+        <span class="hero-title">ZALABIA & DONUTS</span>
       </div>
-      <div class="hero-title">ZALABIA & DONUTS</div>
-      <div class="hero-desc">
-        قائمة فاخرة جداً<br>
-        اطلب فوراً عبر واتساب — سريع، بسيط، أنيق.<br>
-        <small style="color:#25D366;letter-spacing:.4px">01125263455</small>
+      <div class="hero-line" style="margin-bottom:4px;">قائمة فاخرة جداً — اطلب بضغطة</div>
+      <div class="hero-line" style="color:#25D366;">
+        <b>واتساب: 01125263455</b>
       </div>
-      <div class="hero-actions">
-        <button class="hero-btn" onclick="orderWhatsApp()">💬 طلب واتساب</button>
-        <a class="hero-btn" href="tel:01125263455" style="background:var(--accent);color:#fff;">📞 اتصال مباشر</a>
+      <div class="hero-actions-modern">
+        <button class="btn-hero" onclick="orderWhatsApp()">💬 طلب واتساب</button>
+        <a class="btn-call" href="tel:01125263455">📞 اتصال مباشر</a>
       </div>
     </div>
   </section>
-  <!-- SEARCH + CATEGORIES -->
-  <div class="search-bar">
-    <div class="search-container">
-      <input id="searchInput" type="search" class="search-input" placeholder="ابحث عن صنف أو نكهة..." aria-label="ابحث" autocomplete="off" />
-      <span class="search-icon">🔍</span>
-    </div>
+  <!-- SEARCH + CATEGORIES MODERN -->
+  <div class="modern-searchbar">
+    <input id="searchInput" type="search" placeholder="ابحث عن صنف أو نكهة..." aria-label="ابحث">
+    <span class="search-icon">🔍</span>
   </div>
-  <nav class="cat-bar" id="catBar"></nav>
-
+  <nav class="modern-tabs" id="catBar"></nav>
   <!-- MENU GRID -->
   <main>
-    <section class="menu-grid" id="menuGrid" aria-live="polite"></section>
+    <section class="modern-menu-grid" id="menuGrid" aria-live="polite"></section>
   </main>
-
-  <!-- Cart Floating: Minimal stylish, hover reveals small dropdown -->
-  <div class="cart-min" id="cartMin" tabindex="0" aria-label="سلة الطلب">
-    🛒 <span>سلة</span> <span style="flex:1"></span>
-    <span class="cart-count" id="cartCount">0</span>
-    <div class="cart-dropdown" id="cartDropdown">
-      <!-- Filled dynamically -->
-    </div>
+  <!-- Modern Cart Floating + Slide Panel -->
+  <div class="modern-cart-float" id="cartMin" tabindex="0" aria-label="سلة الطلب">
+    <span class="basket-emoji">🛒</span>
+    <span>سلة</span>
+    <span class="modern-cart-count" id="cartCount">0</span>
+    <span class="cart-arrow">➜</span>
+    <div class="modern-cart-panel" id="cartDropdown"></div>
   </div>
-
   <!-- Footer -->
   <footer>
-    <div class="footer-brand">ZALABIA & DONUTS</div>
-    <div class="footer-links">
+    <div class="footer-brand-modern">ZALABIA & DONUTS</div>
+    <div class="footer-links-modern">
       <a href="https://wa.me/201125263455" target="_blank">WhatsApp</a> •
       <a href="https://www.tiktok.com/@zalabiaanddounts?_r=1&_t=ZS-94001VJ1Acm" id="tiktokFooter" target="_blank">TikTok</a> •
       <a href="tel:01125263455">Phone</a>
     </div>
     <div style="color:var(--muted);font-size:0.97rem;">© 2026 All Rights Reserved – ZALABIA & DONUTS</div>
   </footer>
-
   <script>
     // MENU DATA
     const MENU_DATA = [
@@ -318,10 +353,10 @@
       { id:"w_dark",cat:"Waffle",name_ar:"دارك شوكليت",name_en:"Dark Chocolate Waffle",variants:[{label:"Single",price:40}] },
       { id:"w_cotton",cat:"Waffle",name_ar:"غزل البنات",name_en:"Cotton Candy Waffle",variants:[{label:"Single",price:40}] },
       { id:"w_bubblegum",cat:"Waffle",name_ar:"لبان",name_en:"Bubblegum Waffle",variants:[{label:"Single",price:35}] },
-      { id:"mini_10",cat:"Mini Pancake",name_ar:"ميني بانكيك — 10 قطع",name_en:"Mini Pancake (10 pcs)",variants:[{label:"10",price:40}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة","كيندر","دارك شوكليت"] },
-      { id:"mini_15",cat:"Mini Pancake",name_ar:"ميني بانكيك — 15 قطع",name_en:"Mini Pancake (15 pcs)",variants:[{label:"15",price:60}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة","كيندر","دارك شوكليت"] },
-      { id:"mini_20",cat:"Mini Pancake",name_ar:"ميني بانكيك — 20 قطع",name_en:"Mini Pancake (20 pcs)",variants:[{label:"20",price:70}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة","كيندر","دارك شوكليت"] },
-      { id:"mini_25",cat:"Mini Pancake",name_ar:"ميني بانكيك — 25 قطع",name_en:"Mini Pancake (25 pcs)",variants:[{label:"25",price:80}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة","كيندر","دارك شوكليت"] },
+      { id:"mini_10",cat:"Mini Pancake",name_ar:"ميني بانكيك — 10 قطع",name_en:"Mini Pancake (10 pcs)",variants:[{label:"10",price:40}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة"]},
+      { id:"mini_15",cat:"Mini Pancake",name_ar:"ميني بانكيك — 15 قطع",name_en:"Mini Pancake (15 pcs)",variants:[{label:"15",price:60}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة"]},
+      { id:"mini_20",cat:"Mini Pancake",name_ar:"ميني بانكيك — 20 قطع",name_en:"Mini Pancake (20 pcs)",variants:[{label:"20",price:70}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة"]},
+      { id:"mini_25",cat:"Mini Pancake",name_ar:"ميني بانكيك — 25 قطع",name_en:"Mini Pancake (25 pcs)",variants:[{label:"25",price:80}],flavors:["نوتيلا","شوكولاتة بيضاء","لوتس","كراميل","توت أزرق","فراولة"]},
       { id:"zal_sugar",cat:"Zalabia",name_ar:"سكر",name_en:"Sugar",variants:[{label:"S",price:30},{label:"M",price:40},{label:"L",price:60},{label:"XL",price:100}] },
       { id:"zal_honey",cat:"Zalabia",name_ar:"عسل",name_en:"Honey",variants:[{label:"S",price:30},{label:"M",price:40},{label:"L",price:60},{label:"XL",price:100}] },
       { id:"zal_nutella",cat:"Zalabia",name_ar:"نوتيلا",name_en:"Nutella",variants:[{label:"S",price:35},{label:"M",price:50},{label:"L",price:80},{label:"XL",price:120}] },
@@ -346,11 +381,11 @@
       const bar = document.getElementById('catBar'); bar.innerHTML = '';
       cats.forEach((c,i) => {
         const btn = document.createElement('button');
-        btn.className = 'cat-btn' + (i===0?' active':'');
+        btn.className = 'cat-modern-tab' + (i===0?' active':'');
         btn.innerText = (c==='All')?'الكل • All':(c==='Zalabia'?'زلابية • Zalabia':c+' • '+c);
         btn.tabIndex = 0;
         btn.onclick = () => {
-          Array.from(document.querySelectorAll('.cat-btn')).forEach(x=>x.classList.remove('active'));
+          Array.from(document.querySelectorAll('.cat-modern-tab')).forEach(x=>x.classList.remove('active'));
           btn.classList.add('active');
           renderMenu(c==='All'?MENU:MENU.filter(it=>it.cat===c));
         };
@@ -361,7 +396,7 @@
     function renderMenu(list) {
       const grid = document.getElementById('menuGrid'); grid.innerHTML = '';
       list.forEach(item => {
-        const card = document.createElement('article'); card.className='menu-card';
+        const card = document.createElement('article'); card.className='modern-card';
         // Title
         card.innerHTML = `<div class="item-ar">${item.name_ar}</div><div class="item-en">${item.name_en}</div>`;
         // Variants
@@ -383,21 +418,19 @@
         let flavorElem = null;
         if(item.flavors && item.flavors.length) {
           flavorElem = document.createElement('select');
-          flavorElem.style.marginTop="4px";
-          flavorElem.className = "variant-pill";
-          flavorElem.style.background = "#fff5f8";
+          flavorElem.className = "flavor-modern";
           item.flavors.forEach(f => {
             const opt = document.createElement('option'); opt.value = f; opt.textContent = f;
             flavorElem.appendChild(opt);
           });
           card.appendChild(flavorElem);
         }
-        // MINIMAL Actions: one plus, one minus, live count, add button
-        const actions = document.createElement('div'); actions.className='card-actions';
-        const minusBtn = document.createElement('button'); minusBtn.className='min-btn'; minusBtn.textContent='−';
-        const plusBtn = document.createElement('button'); plusBtn.className='plus-btn'; plusBtn.textContent='+';
-        const countShow = document.createElement('span'); countShow.className='count-show'; countShow.textContent='0';
-        // One cart per product+variant+flavor: find count
+        // Modern Actions: one plus, one minus, live count, add
+        const actions = document.createElement('div'); actions.className='modern-card-actions';
+        const minusBtn = document.createElement('button'); minusBtn.className='min-btn-modern'; minusBtn.textContent='−';
+        const plusBtn = document.createElement('button'); plusBtn.className='plus-btn-modern'; plusBtn.textContent='+';
+        const countShow = document.createElement('span'); countShow.className='count-show-modern'; countShow.textContent='0';
+        // Custom key for unique cart items
         const updateCount = ()=>{
           const vIdx = Array.from(variants.children).findIndex(x=>x.classList.contains('selected'));
           const variant = item.variants[vIdx]||item.variants[0];
@@ -425,7 +458,7 @@
         };
         actions.appendChild(minusBtn); actions.appendChild(countShow); actions.appendChild(plusBtn);
         // Add-to-cart button
-        const addBtn = document.createElement('button'); addBtn.className='add-btn'; addBtn.textContent='أضف للسلة';
+        const addBtn = document.createElement('button'); addBtn.className='add-btn-modern'; addBtn.textContent='أضف للسلة';
         addBtn.onclick = ()=> {
           const vIdx = Array.from(variants.children).findIndex(x=>x.classList.contains('selected'));
           const variant = item.variants[vIdx]||item.variants[0];
@@ -443,13 +476,13 @@
     }
     function updateCardActions(item, variant, card, pill) {
       // Update product actions for variant selected, live count
-      const actions = card.querySelector('.card-actions');
-      if(actions && actions.querySelector('.count-show')) {
+      const actions = card.querySelector('.modern-card-actions');
+      if(actions && actions.querySelector('.count-show-modern')) {
         let meta = {};
         if(item.flavors && card.querySelector('select')) meta.flavor = card.querySelector('select').value;
         const key = item.id + '||' + variant.label + '||' + (meta.flavor||'');
         const found = CART.find(c => c.key === key);
-        actions.querySelector('.count-show').textContent = found ? found.qty : 0;
+        actions.querySelector('.count-show-modern').textContent = found ? found.qty : 0;
       }
     }
     // Cart logic: add/remove one, live count per variant/flavor
@@ -476,18 +509,21 @@
     }
     function saveCart() { localStorage.setItem('zalabia_cart_full', JSON.stringify(CART)); }
     function calcTotal() { return CART.reduce((s,i)=>(s+(i.price||0)*(i.qty||1)),0); }
-    function renderCartCount() { document.getElementById('cartCount').innerText = CART.reduce((s,i)=>s+i.qty,0);}
-    // Minimal dropdown cart on hover
+    function renderCartCount() {
+      document.getElementById('cartCount').innerText = CART.reduce((s,i)=>s+i.qty,0);
+      // Cart jump if added
+    }
+    // Modern slide-out panel for cart
     function renderDropdownCart() {
       const dropdown = document.getElementById('cartDropdown');
       dropdown.innerHTML = '';
-      if(CART.length==0) { dropdown.innerHTML=`<div class="cart-empty">السلة فارغة</div>`; return;}
+      if(CART.length==0) { dropdown.innerHTML=`<div class="cart-empty-modern">السلة فارغة</div>`; return;}
       CART.forEach((c,idx)=>{
-        const row = document.createElement('div'); row.className='cart-line';
-        let flavorLine = c.meta && c.meta.flavor ? `<span class="cart-meta">${c.meta.flavor}</span>` : '';
-        row.innerHTML = `<span class="cart-title">${c.name_ar} - ${c.variant}</span> <span>×${c.qty} = ${c.price*c.qty} ج.م</span>`;
+        const row = document.createElement('div'); row.className='cartline';
+        let flavorLine = c.meta && c.meta.flavor ? `<span class="cart-meta-modern">${c.meta.flavor}</span>` : '';
+        row.innerHTML = `<span class="cart-title-modern">${c.name_ar} - ${c.variant}</span> <span>×${c.qty} = ${c.price*c.qty} ج.م</span>`;
         // remove single
-        const removeBtn = document.createElement('button'); removeBtn.className='cart-btn'; removeBtn.textContent='−';
+        const removeBtn = document.createElement('button'); removeBtn.className='cart-btn-modern'; removeBtn.textContent='−';
         removeBtn.onclick = ()=>{ c.qty--; if(c.qty<=0) CART.splice(idx,1); saveCart(); renderCartCount(); renderDropdownCart();}
         row.appendChild(removeBtn);
         dropdown.appendChild(row);
@@ -499,10 +535,10 @@
         }
       });
       // total, order btn
-      const totalDiv = document.createElement('div'); totalDiv.className='cart-total';
+      const totalDiv = document.createElement('div'); totalDiv.className='cart-total-modern';
       totalDiv.innerHTML = `الإجمالي: ${calcTotal()} ج.م`;
       dropdown.appendChild(totalDiv);
-      const orderBtn = document.createElement('button'); orderBtn.className='cart-order-btn'; orderBtn.textContent = '💬 طلب واتساب';
+      const orderBtn = document.createElement('button'); orderBtn.className='cart-order-btn-modern'; orderBtn.textContent = '💬 طلب واتساب';
       orderBtn.onclick = orderWhatsApp;
       dropdown.appendChild(orderBtn);
     }
@@ -533,7 +569,6 @@
       renderMenu(filtered);
     });
 
-    // SPA Init
     function init(){
       renderCats(); renderMenu(MENU); renderCartCount(); renderDropdownCart();
       document.getElementById('tiktokFooter').href = "https://www.tiktok.com/@zalabiaanddounts?_r=1&_t=ZS-94001VJ1Acm";
