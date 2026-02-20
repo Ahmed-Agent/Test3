@@ -3,277 +3,315 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZALABIA & DONUTS | منيو</title>
-
+<title>ZALABIA & DONUTS</title>
 <link rel="icon" href="https://nol.pages.dev/sec/donicon.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-    --pink:#ff2e93;
-    --orange:#ff8c42;
-    --dark:#0f0f14;
-    --light:#ffffff;
-    --gray:#f4f4f6;
-    --radius:18px;
+ --pink:#ff2e93;
+ --orange:#ff8c42;
+ --radius:18px;
 }
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif}
-body{
-    background:linear-gradient(180deg,#ffffff 0%,#fff5f9 100%);
-    color:#111;
-    overflow-x:hidden;
-}
+body{background:#fff;color:#111}
 .hero{
-    background:linear-gradient(135deg,var(--pink),var(--orange));
-    color:white;
-    padding:60px 20px;
-    text-align:center;
-    border-bottom-left-radius:60px;
-    border-bottom-right-radius:60px;
-    position:relative;
+ background:linear-gradient(135deg,var(--pink),var(--orange));
+ color:#fff;text-align:center;padding:60px 20px;
+ border-bottom-left-radius:60px;border-bottom-right-radius:60px;
 }
 .hero h1{font-size:32px;font-weight:800}
-.hero p{opacity:.9;margin-top:10px}
-.hero button{
-    margin-top:20px;
-    background:white;
-    color:var(--pink);
-    border:none;
-    padding:12px 25px;
-    border-radius:30px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.3s;
-}
-.hero button:hover{transform:scale(1.05)}
-.search-bar{
-    max-width:500px;
-    margin:30px auto;
-    padding:12px 20px;
-    border-radius:30px;
-    border:2px solid var(--pink);
-    outline:none;
-    width:90%;
-    transition:.3s;
-}
-.search-bar:focus{box-shadow:0 0 20px rgba(255,46,147,.3)}
-.section{
-    padding:40px 20px;
-}
-.category{
-    margin-bottom:50px;
-}
-.category-header{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:20px;
-}
-.category-header img{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    border:3px solid var(--pink);
-}
-.category-header h2{
-    font-size:22px;
-    color:var(--pink);
-}
-.menu-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
-}
+.hero p{margin-top:10px;opacity:.9}
+.section{padding:40px 20px}
+.category{margin-bottom:60px}
+.category-header{display:flex;align-items:center;gap:12px;margin-bottom:25px}
+.category-header img{width:60px;height:60px;border-radius:50%;border:3px solid var(--pink)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+
 .item{
-    background:white;
-    padding:15px;
-    border-radius:var(--radius);
-    box-shadow:0 5px 15px rgba(0,0,0,.05);
-    transition:.3s;
-    position:relative;
+ background:#fff;
+ padding:18px;
+ border-radius:var(--radius);
+ box-shadow:0 8px 20px rgba(0,0,0,.06);
+ transition:.3s;
 }
 .item:hover{transform:translateY(-5px)}
-.item h3{font-size:16px;margin-bottom:5px}
-.price{font-weight:700;color:var(--pink)}
-select, input[type=number]{
-    width:100%;
-    padding:8px;
-    margin-top:8px;
-    border-radius:10px;
-    border:1px solid #ddd;
+.item h3{font-size:16px;margin-bottom:8px}
+
+.pills{display:flex;gap:6px;margin:8px 0}
+.pill{
+ flex:1;padding:6px;text-align:center;
+ border-radius:20px;border:2px solid var(--pink);
+ font-size:12px;cursor:pointer;transition:.3s;
 }
+.pill.active{
+ background:linear-gradient(90deg,var(--pink),var(--orange));
+ color:#fff;
+}
+
+.qty{display:flex;gap:6px;align-items:center;margin-top:6px}
+.qty button{
+ flex:1;border:none;background:var(--pink);
+ color:#fff;border-radius:10px;padding:6px;cursor:pointer;
+}
+.qty span{min-width:20px;text-align:center}
+
+.price{margin-top:6px;font-weight:800;color:var(--pink)}
+
 .add-btn{
-    margin-top:10px;
-    background:linear-gradient(90deg,var(--pink),var(--orange));
-    color:white;
-    border:none;
-    padding:8px;
-    width:100%;
-    border-radius:20px;
-    cursor:pointer;
+ margin-top:10px;width:100%;
+ background:linear-gradient(90deg,var(--pink),var(--orange));
+ border:none;color:#fff;padding:10px;
+ border-radius:25px;cursor:pointer;
 }
+
 .cart-btn{
-    position:fixed;
-    bottom:20px;
-    left:20px;
-    background:linear-gradient(90deg,var(--pink),var(--orange));
-    color:white;
-    width:60px;height:60px;
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:24px;
-    cursor:pointer;
-    box-shadow:0 10px 20px rgba(0,0,0,.2);
+ position:fixed;bottom:20px;left:20px;
+ width:65px;height:65px;border-radius:50%;
+ background:linear-gradient(90deg,var(--pink),var(--orange));
+ display:flex;align-items:center;justify-content:center;
+ color:#fff;font-size:26px;cursor:pointer;
+ box-shadow:0 15px 30px rgba(0,0,0,.2);
 }
-.cart-drawer{
-    position:fixed;
-    top:0;
-    left:-100%;
-    width:90%;
-    max-width:400px;
-    height:100%;
-    background:white;
-    box-shadow:5px 0 20px rgba(0,0,0,.1);
-    transition:.4s;
-    padding:20px;
-    overflow-y:auto;
+.cart{
+ position:fixed;top:0;left:-100%;
+ width:90%;max-width:400px;height:100%;
+ background:#fff;padding:20px;
+ box-shadow:5px 0 30px rgba(0,0,0,.15);
+ transition:.4s;overflow:auto;
 }
-.cart-drawer.active{left:0}
-.cart-item{margin-bottom:10px}
-.total{
-    font-weight:800;
-    margin-top:15px;
-    color:var(--pink);
-}
+.cart.active{left:0}
+.total{margin-top:15px;font-weight:800;color:var(--pink)}
 .whatsapp-btn{
-    margin-top:15px;
-    background:#25d366;
-    color:white;
-    border:none;
-    padding:10px;
-    width:100%;
-    border-radius:20px;
-    cursor:pointer;
+ margin-top:15px;background:#25d366;
+ border:none;padding:10px;width:100%;
+ border-radius:25px;color:#fff;cursor:pointer;
 }
 footer{
-    margin-top:50px;
-    background:var(--dark);
-    color:white;
-    text-align:center;
-    padding:40px 20px;
-    border-top-left-radius:40px;
-    border-top-right-radius:40px;
+ margin-top:50px;background:#111;color:#fff;
+ text-align:center;padding:40px 20px;
+ border-top-left-radius:40px;border-top-right-radius:40px;
 }
-footer a{
-    color:var(--pink);
-    text-decoration:none;
-    display:block;
-    margin:5px 0;
-}
+footer a{color:var(--pink);text-decoration:none;display:block;margin:6px 0}
 </style>
 </head>
-
 <body>
 
 <div class="hero">
 <h1>🍩 ZALABIA & DONUTS</h1>
-<p>ألذ طعم يخليك تطلب تاني فوراً 🔥</p>
-<button onclick="openCart()">اطلب الآن</button>
+<p>الطعم اللي يخليك تطلب تاني فوراً 🔥</p>
 </div>
-
-<input class="search-bar" placeholder="ابحث عن منتج...">
 
 <div class="section">
 
-<!-- Donuts -->
+<!-- DONUTS -->
 <div class="category">
 <div class="category-header">
-<img src="donuts.png">
-<h2>🍩 Donuts</h2>
+<img src="donuts.png"><h2>🍩 Donuts</h2>
 </div>
-<div class="menu-grid" id="donuts"></div>
+<div class="menu-grid">
+
+<!-- Example Donut Item (repeated for all flavors hardcoded) -->
+<div class="item">
+<h3>نوتيلا</h3>
+<div class="pills" data-prices='{"Single":35,"Double":50}'>
+<div class="pill active" data-size="Single">Single</div>
+<div class="pill" data-size="Double">Double</div>
+</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<div class="price">35</div>
+<button class="add-btn" onclick="addToCart(this,'دونات نوتيلا')">أضف للسلة</button>
 </div>
 
-<!-- Waffle -->
+<div class="item">
+<h3>فيريرو روشيه</h3>
+<div class="pills" data-prices='{"Single":40,"Double":60}'>
+<div class="pill active" data-size="Single">Single</div>
+<div class="pill" data-size="Double">Double</div>
+</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<div class="price">40</div>
+<button class="add-btn" onclick="addToCart(this,'دونات فيريرو روشيه')">أضف للسلة</button>
+</div>
+
+</div>
+</div>
+
+<!-- WAFFLE -->
 <div class="category">
 <div class="category-header">
-<img src="waffle.png">
-<h2>🧇 Waffle</h2>
+<img src="waffle.png"><h2>🧇 Waffle</h2>
 </div>
-<div class="menu-grid" id="waffle"></div>
+<div class="menu-grid">
+
+<div class="item">
+<h3>وافل نوتيلا</h3>
+<div class="price">35</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button class="add-btn" onclick="addSimple(this,'وافل نوتيلا',35)">أضف للسلة</button>
 </div>
 
-<!-- Mini Pancake -->
+</div>
+</div>
+
+<!-- PANCAKE -->
 <div class="category">
 <div class="category-header">
-<img src="pancake.png">
-<h2>🥞 Mini Pancake</h2>
+<img src="pancake.png"><h2>🥞 Mini Pancake</h2>
 </div>
-<div class="menu-grid" id="pancake"></div>
+<div class="menu-grid">
+
+<div class="item">
+<h3>10 قطع</h3>
+<div class="price">40</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button class="add-btn" onclick="addSimple(this,'ميني بانكيك 10 قطع',40)">أضف للسلة</button>
 </div>
 
-<!-- Zalabia -->
+</div>
+</div>
+
+<!-- ZALABIA -->
 <div class="category">
 <div class="category-header">
-<img src="Zalabia.png">
-<h2>🍯 Zalabia</h2>
+<img src="Zalabia.png"><h2>🍯 Zalabia</h2>
 </div>
-<div class="menu-grid" id="zalabia"></div>
+<div class="menu-grid">
+
+<div class="item">
+<h3>سكر</h3>
+<div class="pills" data-prices='{"S":30,"M":40,"L":60,"XL":100}'>
+<div class="pill active" data-size="S">S</div>
+<div class="pill" data-size="M">M</div>
+<div class="pill" data-size="L">L</div>
+<div class="pill" data-size="XL">XL</div>
+</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<div class="price">30</div>
+<button class="add-btn" onclick="addToCart(this,'زلابية سكر')">أضف للسلة</button>
 </div>
 
-<!-- Ice Coffee -->
+</div>
+</div>
+
+<!-- ICE COFFEE -->
 <div class="category">
 <div class="category-header">
-<img src="ice.png">
-<h2>☕ Ice Coffee</h2>
+<img src="ice.png"><h2>☕ Ice Coffee</h2>
 </div>
-<div class="menu-grid" id="coffee"></div>
+<div class="menu-grid">
+
+<div class="item">
+<h3>دارك</h3>
+<div class="price">50</div>
+<div class="qty">
+<button onclick="changeQty(this,-1)">-</button>
+<span>1</span>
+<button onclick="changeQty(this,1)">+</button>
+</div>
+<button class="add-btn" onclick="addSimple(this,'آيس كوفي دارك',50)">أضف للسلة</button>
+</div>
+
+</div>
 </div>
 
 </div>
 
-<div class="cart-btn" onclick="openCart()">🛒</div>
+<div class="cart-btn" onclick="toggleCart()">🛒</div>
 
-<div class="cart-drawer" id="cartDrawer">
+<div class="cart" id="cart">
 <h2>سلة الطلب</h2>
 <div id="cartItems"></div>
-<div class="total" id="totalPrice">الإجمالي: 0 جنيه</div>
+<div class="total" id="total">الإجمالي: 0 جنيه</div>
 <button class="whatsapp-btn" onclick="sendWhatsApp()">اطلب عبر واتساب</button>
 </div>
 
 <footer>
 <h3>🔥 طعم يخليك تدمنه</h3>
-<a href="https://wa.me/201125263455">📱 واتساب: 01125263455</a>
+<a href="https://wa.me/201125263455">📱 01125263455</a>
 <a href="https://www.tiktok.com/@zalabiaanddounts?_r=1&_t=ZS-94001VJ1Acm">🎵 TikTok</a>
-<p>© 2026 All Rights Reserved – ZALABIA & DONUTS</p>
+<p>© 2026 ZALABIA & DONUTS</p>
 </footer>
 
 <script>
 const cart=[];
-function addItem(name,price){
-    cart.push({name,price});
-    updateCart();
+
+document.querySelectorAll(".pills").forEach(group=>{
+ const prices=JSON.parse(group.dataset.prices);
+ const priceDiv=group.parentElement.querySelector(".price");
+ group.querySelectorAll(".pill").forEach(pill=>{
+  pill.onclick=()=>{
+   group.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
+   pill.classList.add("active");
+   priceDiv.innerText=prices[pill.dataset.size];
+  };
+ });
+});
+
+function changeQty(btn,delta){
+ const span=btn.parentElement.querySelector("span");
+ let qty=parseInt(span.innerText);
+ qty=Math.max(1,qty+delta);
+ span.innerText=qty;
 }
+
+function addToCart(btn,name){
+ const item=btn.parentElement;
+ const size=item.querySelector(".pill.active").dataset.size;
+ const price=parseInt(item.querySelector(".price").innerText);
+ const qty=parseInt(item.querySelector(".qty span").innerText);
+ cart.push({name,size,price,qty});
+ updateCart();
+}
+
+function addSimple(btn,name,price){
+ const qty=parseInt(btn.parentElement.querySelector(".qty span").innerText);
+ cart.push({name,price,qty});
+ updateCart();
+}
+
 function updateCart(){
-    const container=document.getElementById("cartItems");
-    container.innerHTML="";
-    let total=0;
-    cart.forEach(item=>{
-        total+=item.price;
-        container.innerHTML+=`<div class="cart-item">${item.name} - ${item.price} جنيه</div>`;
-    });
-    document.getElementById("totalPrice").innerText="الإجمالي: "+total+" جنيه";
+ const container=document.getElementById("cartItems");
+ container.innerHTML="";
+ let total=0;
+ cart.forEach(i=>{
+  total+=i.price*i.qty;
+  container.innerHTML+=`<div>${i.name} ${i.size? '('+i.size+')':''} × ${i.qty}</div>`;
+ });
+ document.getElementById("total").innerText="الإجمالي: "+total+" جنيه";
 }
-function openCart(){
-    document.getElementById("cartDrawer").classList.toggle("active");
+
+function toggleCart(){
+ document.getElementById("cart").classList.toggle("active");
 }
+
 function sendWhatsApp(){
-    let message="مرحباً 👋 أريد طلب:\n";
-    cart.forEach(i=>message+=i.name+" - "+i.price+" جنيه\n");
-    let total=cart.reduce((a,b)=>a+b.price,0);
-    message+="\nالإجمالي: "+total+" جنيه 💖";
-    window.open("https://wa.me/201125263455?text="+encodeURIComponent(message));
+ let msg="مرحباً 👋 أريد طلب:\n";
+ cart.forEach(i=>{
+  msg+=`${i.name} ${i.size? '('+i.size+')':''} × ${i.qty}\n`;
+ });
+ const total=cart.reduce((a,b)=>a+(b.price*b.qty),0);
+ msg+=`\nالإجمالي: ${total} جنيه 💖`;
+ window.open("https://wa.me/201125263455?text="+encodeURIComponent(msg));
 }
 </script>
 
